@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  notification_blueprint: one
+  notifier_id: 
+
+two:
+  notification_blueprint: two
+  notifier_id: 
