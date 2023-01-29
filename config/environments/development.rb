@@ -4,7 +4,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   Rails.application.routes.default_url_options = {
-    host: 'http://192.168.1.48:3000'
+    host: 'http://192.168.88.230:3000'
   }
 
   # In the development environment your application's code is reloaded any time
