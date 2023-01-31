@@ -7,8 +7,8 @@ import {
   loginUserWithToken,
 } from "./sessionAPI";
 
-const client_id = "yj3rroGJVmwir_EkP1XyI_qI2mzN0CI2DJawduMXFUQ";
-const client_secret = "vxGIWxR_RJoESDT9Dn_fiFArwPIz7OFpPpcdhljhuAg";
+const client_id = "Hnh_BkCS1zi7kGappmZpB9Nu5hyQC758Izm8-sl-6f8";
+const client_secret = "Aft-ktTRylnGFGe1f66PXkQZrlzAXFqmr9rjjVPp9GY";
 
 const initialState = {
   auth_token: null,
