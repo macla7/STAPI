@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://192.168.88.230:6379/1" } %>
-  channel_prefix: doorkeeperTutorial_production
+  url: <%= ENV.fetch("REDIS_URL") { "redis://:p08d9b7f73bdf1ca5ed98948470e4ca0396d72c1517490d242d6ad6826dbe222c@ec2-34-234-125-234.compute-1.amazonaws.com:20009" } %>
+  channel_prefix: shiftTrader_production
