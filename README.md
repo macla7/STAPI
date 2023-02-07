@@ -7,7 +7,6 @@
 - aws forget email address / mailer
 - Stripe
 - Twilio (maybe when I get a feaking phone number again)
-- Aws deploying.. my lord...
 - App and Android store..
 - push notifications
   - seems the way to go will be the expo push notification package.. but since to test it all properly it'll require a paid Apple developer account (apparently), I'm going to push this one toward the end.
@@ -101,4 +100,5 @@ But the following articles helped even more I reckon
 - Spent probably all day, 5+hrs, trying to get fonts to work by customising react native base themes. What seemed to fix it in the end was a version update of 'native-base' itself using 'yarn upgrade native-base'..
 - Now it seems native-base doesn't like it if I try to set a customer font-Weight..
 - Uploading images via expo image picker, using form data as per [this SO Post](https://stackoverflow.com/a/46740071/17632294)
+
 # STAPI

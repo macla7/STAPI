@@ -3,11 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :omniauthable, 
-         :jwt_authenticatable,
+         :jwt_authenticatable, :recoverable,
          jwt_revocation_strategy: JwtDenylist,
          omniauth_providers: [:google_oauth2]
-        
-  #:recoverable, :rememberable, :validatable
+         
+         # :rememberable, :validatable
 
   validates :email, format: URI::MailTo::EMAIL_REGEXP
   enum role: %i[user admin]
