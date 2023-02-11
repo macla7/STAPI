@@ -5,6 +5,14 @@
 - Omniauth
   - deanin vid.. got to 15:00mins in.. hit snag that I need a bundle ID. Appears to be an apple thing. Fuck. Put this on pause. Done all the 'rails code' for the video i believe.. (had to be edited for my api, jwt token auth setup).
 - aws forget email address / mailer
+
+  - Try setting up with guide and RoR guides. May use sendGrid as per TOP instructions.
+  - So I believe I've got basic recoverable working for app. I am deliberately going to leave default devise 'forget password' page thing. Workflow will be user clicks button, gets email, goes to safair on phone or whatever, changes password. Then they can try again on app. After password changes it currently routes to home. Maybe we have a landing page / or successful password change redirect.. which is just a very basic page saying 'go back to app and try again' lol.
+  - TODO:
+    - set up button that hits api, in dev (to test)
+    - send up sendGrid.
+    - Figure out what "protect_from_forgery prepend: true" is doing, and where to properly put it.. if anywhere at all.
+
 - Stripe
 - Twilio (maybe when I get a feaking phone number again)
 - App and Android store..

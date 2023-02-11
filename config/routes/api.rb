@@ -1,5 +1,7 @@
 namespace :api do
   namespace :v1 do
+    # devise_for :users, skip: :registration
+    
     scope :users, module: :users do
       post '/', to: 'registrations#create', as: :user_registration
       get '/session-data', to: 'sessions#show'
