@@ -18,6 +18,16 @@ Devise.setup do |config|
   config.jwt do |jwt|
     jwt.secret = Rails.application.credentials[:jwt_secret_key]
   end
+
+  # This is me overwriting the firend_token devise method in devise/lib/devise.rb
+  # As per this SO post https://stackoverflow.com/questions/49803762/override-self-friendly-token-in-devise
+  # In order to make the token something the user can easily input back into
+  # react native front end, manually.
+  module Devise
+    def self.friendly_token(length = 6)
+      SecureRandom.alphanumeric(length)
+    end
+  end
   
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
