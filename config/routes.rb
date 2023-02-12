@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :groups
   resources :posts, :books
 
-  devise_for :users
+  devise_for :users, controllers: { passwords: 'users/passwords' }
   root 'pages#home'
 
   draw :api

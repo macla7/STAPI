@@ -1,4 +1,4 @@
-# README
+# Look on my Works, ye Mighty, and despair!
 
 ## CURRENT TODO's
 
@@ -9,9 +9,10 @@
   - Try setting up with guide and RoR guides. May use sendGrid as per TOP instructions.
   - So I believe I've got basic recoverable working for app. I am deliberately going to leave default devise 'forget password' page thing. Workflow will be user clicks button, gets email, goes to safair on phone or whatever, changes password. Then they can try again on app. After password changes it currently routes to home. Maybe we have a landing page / or successful password change redirect.. which is just a very basic page saying 'go back to app and try again' lol.
   - TODO:
-    - set up button that hits api, in dev (to test)
-    - set up forgetPassword page.
-    - then do i want to get the user to copy the code (somehow make it six digits like fb) and then have a 'newpassword' screen?
+    - set up ForgetPassword page, where you enter email and get the token emailed. This will check if the email is valid, and if so, it'll then send the email (2 requests?) (UP TO HERE)!
+    - Ah. Need to make env variables for url for prod and dev.
+    - set up Token page, on valid token you are taken to change password page. Make this page reusable for regular change of password use.
+    - on success, you are logged in and land on home.
     - send up sendGrid.
     - Figure out what "protect_from_forgery prepend: true" is doing, and where to properly put it.. if anywhere at all.
 
@@ -104,6 +105,11 @@ But the following articles helped even more I reckon
 - The [ActionCable](https://guides.rubyonrails.org/action_cable_overview.html) docs themselves also helped a fair bit.
 - Probably a big TODO with production is to figure out / learn how it'll work if I use redis to implement it, which seems to be the way most guides do. Atm development I've just revereted back to 'async'. So I don't have to manually start some redis server I don't know much about.
 - [This](https://www.youtube.com/watch?v=NwQEZXnVXJ8&ab_channel=SaloniMehta) video was also pretty good in terms of high level example of what was going on. Don't try to implement the details tho..
+
+**ENV Variables**
+
+- EDITOR="code --wait" rails credentials:edit at the moment...
+- Ah issue.. dotenv won't necessarily work because it's only for my rails app... i need an env manager now for my react native app...
 
 **BIG ISSUES BEATEN**
 
