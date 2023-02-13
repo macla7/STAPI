@@ -13,9 +13,9 @@ class Users::PasswordsController < Devise::PasswordsController
 
     if successfully_sent?(resource)
       # respond_with({}, location: after_sending_reset_password_instructions_path_for(resource_name))
-      render json: { status: 'email found'}
+      render json: { emailValidity: true}
     else
-      render json: { status: 'email not found'}
+      render json: { emailValidity: false}
     end
   end
 
@@ -26,9 +26,9 @@ class Users::PasswordsController < Devise::PasswordsController
     user = User.find_by(reset_password_token: token)
     respond_to do |format|
       if user.present?
-        format.json { render json: true, status: :ok }
+        format.json { render json: {tokenValidity: true}, status: :ok }
       else
-        format.json { render json: false, status: :unprocessable_entity }
+        format.json { render json: {tokenValidity: false}, status: :unprocessable_entity }
       end
     end
   end
