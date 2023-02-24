@@ -2,12 +2,12 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :omniauthable, 
-         :jwt_authenticatable, :recoverable,
+         :omniauthable, :validatable,
+         :jwt_authenticatable, :recoverable, 
          jwt_revocation_strategy: JwtDenylist,
          omniauth_providers: [:google_oauth2]
          
-         # :rememberable, :validatable
+         # :rememberable
 
   validates :email, format: URI::MailTo::EMAIL_REGEXP
   enum role: %i[user admin]
