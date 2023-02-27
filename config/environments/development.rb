@@ -45,7 +45,23 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.delivery_method = :letter_opener
+  # I am adding this in to get access to the env vairables for the sendgrid_api_secret
+  if ['development', 'test'].include? ENV['RAILS_ENV']
+    Dotenv::Railtie.load
+  end
+
+  # config.action_mailer.delivery_method = :letter_opener
+   ActionMailer::Base.smtp_settings = {
+      :address => 'smtp.sendgrid.net',
+      :port => 587,
+      :authentication => :plain,
+      :user_name => 'apikey',
+      :password =>  ENV['sendgrid_api_secret'],
+      :domain => 'em5371.shiftmarket.com.au',
+      :enable_starttls_auto => true
+    }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options ={:host => 'http://localhost:3000', :protocol => 'https'}
   config.action_mailer.perform_deliveries = true
 
   # Print deprecation notices to the Rails logger.

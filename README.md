@@ -1,4 +1,4 @@
-# Look on my Works, ye Mighty, and despair!
+# Look on my works, ye mighty, and despair !
 
 ## CURRENT TODO's
 
@@ -7,12 +7,7 @@
 - aws forget email address / mailer
 
   - Try setting up with guide and RoR guides. May use sendGrid as per TOP instructions.
-  - So I believe I've got basic recoverable working for app. I am deliberately going to leave default devise 'forget password' page thing. Workflow will be user clicks button, gets email, goes to safair on phone or whatever, changes password. Then they can try again on app. After password changes it currently routes to home. Maybe we have a landing page / or successful password change redirect.. which is just a very basic page saying 'go back to app and try again' lol.
   - TODO:
-    - set up ForgetPassword page, where you enter email and get the token emailed. This will check if the email is valid, and if so, it'll then send the email (2 requests?)
-    - Now to take me to token page on real email
-    - set up Token page, on valid token you are taken to change password page. Make this page reusable for regular change of password use.
-    - on success, you are logged in and land on home.
     - send up sendGrid.
     - Figure out what "protect_from_forgery prepend: true" is doing, and where to properly put it.. if anywhere at all.
 
@@ -120,3 +115,5 @@ But the following articles helped even more I reckon
 - Uploading images via expo image picker, using form data as per [this SO Post](https://stackoverflow.com/a/46740071/17632294)
 
 # STAPI
+
+quantitative-chameleon-qcnb3h4l1yobnh01l87xqyxm.herokudns.com

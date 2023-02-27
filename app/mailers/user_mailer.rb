@@ -3,7 +3,7 @@ class UserMailer < Devise::Mailer
   # email sent by devise. According to this guide: 
   # https://www.truemark.dev/blog/reset-password-in-react-and-rails/
 
-  default from: "<bobbbybing@hello.com>"
+  default from: "<do-not-reply@em5371.shiftmarket.com.au>"
 
   def reset_password_instructions(record, token, opts={})
     super
