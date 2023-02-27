@@ -11,24 +11,11 @@
     - send up sendGrid --> Waiting on email back from their support team..
     - Figure out what "protect_from_forgery prepend: true" is doing, and where to properly put it.. if anywhere at all.
 
-- Stripe
-- Twilio (maybe when I get a feaking phone number again)
+- Time to get expo up on it's own server?
 - App and Android store..
 - push notifications
   - seems the way to go will be the expo push notification package.. but since to test it all properly it'll require a paid Apple developer account (apparently), I'm going to push this one toward the end.
 - User Testing
-
-**Twilio (phone) verification**
-
-**Create facebook/instagram login support, omniauth(?)**
-
-**Get mailer supported for password forget, signup, and reciept of purchasse of shift**
-
-**Create Banking functionality....**
-
-- watch Deain part 15 and 16 videos at double pace.
-- research into Stripe
-- research into pay gem
 
 **Relevant Deanin videos I want to watch**
 
@@ -50,6 +37,10 @@
 
 **Non MVP features**
 
+- Stripe
+  - research into Stripe
+  - research into pay gem
+- Twilio (maybe when I get a feaking phone number again)
 - Limit retrieved notifications, and then just have a 'view more' to retrieve the next older batch.
 - follow posts ( followers (?))
 - Viewed (Shows number of views on posts)
@@ -115,5 +106,3 @@ But the following articles helped even more I reckon
 - Uploading images via expo image picker, using form data as per [this SO Post](https://stackoverflow.com/a/46740071/17632294)
 
 # STAPI
-
-quantitative-chameleon-qcnb3h4l1yobnh01l87xqyxm.herokudns.com
