@@ -8,7 +8,7 @@
 
   - Try setting up with guide and RoR guides. May use sendGrid as per TOP instructions.
   - TODO:
-    - send up sendGrid.
+    - send up sendGrid --> Waiting on email back from their support team..
     - Figure out what "protect_from_forgery prepend: true" is doing, and where to properly put it.. if anywhere at all.
 
 - Stripe
