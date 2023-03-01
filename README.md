@@ -8,11 +8,20 @@
 
   - Try setting up with guide and RoR guides. May use sendGrid as per TOP instructions.
   - TODO:
-    - send up sendGrid --> Waiting on email back from their support team..
     - Figure out what "protect_from_forgery prepend: true" is doing, and where to properly put it.. if anywhere at all.
 
-- Time to get expo up on it's own server?
+- Time to get Expo up on it's own server?
+
+  - Process:
+    1. Figure out toying around with EAS Build.. done. Can now build for ios simulator.
+    2. To follow expo guide on best practices, and implement it all.. One at a time.
+    - to test permissions, want to access on phone.. to change dp and test how it works.. with getting access to photos.. etc.. what i need to do.. for the moment I need to skip as wifi is that bad......
+    -
+    3. Follow Apple's guide on best practices.
+    4. Figure out toying around with EAS Submit..?
+
 - App and Android store..
+- validation email
 - push notifications
   - seems the way to go will be the expo push notification package.. but since to test it all properly it'll require a paid Apple developer account (apparently), I'm going to push this one toward the end.
 - User Testing
