@@ -16,7 +16,8 @@
     1. Figure out toying around with EAS Build.. done. Can now build for ios simulator.
     2. To follow expo guide on best practices, and implement it all.. One at a time.
     - to test permissions, want to access on phone.. to change dp and test how it works.. with getting access to photos.. etc.. what i need to do.. for the moment I need to skip as wifi is that bad......
-    -
+    - seems we could probably do the EAS Metadata in the apple store dashboard (or something lol).
+    - Up to playing around with status bar (((UP TO HERE)))
     3. Follow Apple's guide on best practices.
     4. Figure out toying around with EAS Submit..?
 
