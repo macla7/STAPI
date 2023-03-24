@@ -3,8 +3,13 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # I am adding this in to get access to the env vairables for the sendgrid_api_secret
+  if ['development', 'test'].include? ENV['RAILS_ENV']
+    Dotenv::Railtie.load
+  end
+
   Rails.application.routes.default_url_options = {
-    host: 'http://192.168.0.51:3000'
+    host: ENV['REGULAR_URL']
   }
 
   # In the development environment your application's code is reloaded any time
@@ -45,11 +50,6 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  # I am adding this in to get access to the env vairables for the sendgrid_api_secret
-  if ['development', 'test'].include? ENV['RAILS_ENV']
-    Dotenv::Railtie.load
-  end
-
   config.action_mailer.delivery_method = :letter_opener
   #  ActionMailer::Base.smtp_settings = {
   #     :address => 'smtp.sendgrid.net',
@@ -61,7 +61,7 @@ Rails.application.configure do
   #     :enable_starttls_auto => true
   #   }
   # config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options ={:host => 'http://192.168.0.51:3000', :protocol => 'https'}
+  config.action_mailer.default_url_options ={:host => ENV['REGULAR_URL'], :protocol => 'https'}
   config.action_mailer.perform_deliveries = true
 
   # Print deprecation notices to the Rails logger.

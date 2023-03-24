@@ -21,6 +21,7 @@
     3. Follow Apple's guide on best practices.
     4. Figure out toying around with EAS Submit..?
 
+- Need to fix up the profile section a lot more.. DP changing is buggy. Should be able to change your name.
 - App and Android store..
 - validation email
 - push notifications
@@ -30,8 +31,6 @@
 **Relevant Deanin videos I want to watch**
 
 - Intro to Rich Comments in Rails 7
-- Setup Devise Confirmable and MailCatcher
-- Deplo a Rails 7 App To Heroku ..? No Free tier anymore so not sure if it's the way.
 - N+1 Query And Performance Optizizations
 - Devise Onboarding with Wicked Gem
 - Monethly Subscriptions with Stripe and Pay Gem
@@ -109,6 +108,10 @@ But the following articles helped even more I reckon
 - Just go into .env to edit
 - Theoretically in prod, I am simply going to set with heroku interface somehow..
 
+**Splash Screen and Icons**
+
+- Created using Figma as per the expo guides [here](https://docs.expo.dev/guides/app-icons/)
+
 **BIG ISSUES BEATEN**
 
 - Spent probably all day, 5+hrs, trying to get fonts to work by customising react native base themes. What seemed to fix it in the end was a version update of 'native-base' itself using 'yarn upgrade native-base'..
@@ -116,3 +119,7 @@ But the following articles helped even more I reckon
 - Uploading images via expo image picker, using form data as per [this SO Post](https://stackoverflow.com/a/46740071/17632294)
 
 # STAPI
+
+**Reset password**
+
+- somewhat based my workflow on suggestions from [this](https://www.truemark.dev/blog/reset-password-in-react-and-rails/) article.
