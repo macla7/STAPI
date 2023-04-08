@@ -11,6 +11,7 @@
     - Figure out what "protect_from_forgery prepend: true" is doing, and where to properly put it.. if anywhere at all.
 
 - Time to get Expo up on it's own server?
+- Don't think we need to do the above. As it'll run on apple/anfroid stores..?
 
   - Process:
     1. Figure out toying around with EAS Build.. done. Can now build for ios simulator.
@@ -24,6 +25,10 @@
 - Need to fix up the profile section a lot more.. DP changing is buggy. Should be able to change your name.
 - App and Android store..
 - validation email
+- Make green button variant for white areas. Ie login.
+- Make outline button variant for headers.
+- Make my own colour scheme using the theme I've choosen. Ajusts bids with the scheme.
+- Make header button component
 - push notifications
   - seems the way to go will be the expo push notification package.. but since to test it all properly it'll require a paid Apple developer account (apparently), I'm going to push this one toward the end.
 - User Testing
