@@ -21,21 +21,21 @@ module NotificationHelpers
     set_entity(notification_blueprint.notificationable_type, notification_blueprint.notificationable_id)
     case notification_blueprint.notification_type
     when 1
-      return "#{notification_origin.notifier.email} invited you to #{@group.name}"
+      return "#{notification_origin.notifier.name} invited you to #{@group.name}"
     when 3
-      return "#{notification_origin.notifier.email} has requested to join #{@group.name}"
+      return "#{notification_origin.notifier.name} has requested to join #{@group.name}"
     when 4
-      return "#{notification_origin.notifier.email} posted in #{@group.name}"
+      return "#{notification_origin.notifier.name} posted in #{@group.name}"
     when 5
-      return "#{notification_origin.notifier.email} bid on your Post"
+      return "#{notification_origin.notifier.name} bid on your Post"
     when 6
-      return "#{notification_origin.notifier.email} bid on a Post you've bid on"
+      return "#{notification_origin.notifier.name} bid on a Post you've bid on"
     when 7
-      return "#{notification_origin.notifier.email} liked your Post"
+      return "#{notification_origin.notifier.name} liked your Post"
     when 8
-      return "#{notification_origin.notifier.email} commented on your Post"
+      return "#{notification_origin.notifier.name} commented on your Post"
     when 9
-      return "#{notification_origin.notifier.email} commented on a Post you've commented on"
+      return "#{notification_origin.notifier.name} commented on a Post you've commented on"
     else 
       return "Error, can't find this notification.."
     end

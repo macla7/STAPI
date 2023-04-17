@@ -22,13 +22,11 @@
     3. Follow Apple's guide on best practices.
     4. Figure out toying around with EAS Submit..?
 
-- Need to fix up the profile section a lot more.. DP changing is buggy. Should be able to change your name.
 - App and Android store..
 - validation email
-- Make green button variant for white areas. Ie login.
-- Make outline button variant for headers.
-- Make my own colour scheme using the theme I've choosen. Ajusts bids with the scheme.
+- make a grey button
 - Make header button component
+- make our own custom pressables
 - push notifications
   - seems the way to go will be the expo push notification package.. but since to test it all properly it'll require a paid Apple developer account (apparently), I'm going to push this one toward the end.
 - User Testing
