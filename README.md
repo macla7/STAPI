@@ -24,12 +24,11 @@
 
 - App and Android store..
 - validation email
-- make a grey button
-- Make header button component
-- make our own custom pressables
 - push notifications
   - seems the way to go will be the expo push notification package.. but since to test it all properly it'll require a paid Apple developer account (apparently), I'm going to push this one toward the end.
+- update loading screen and app logo thingy for new colour scheme.
 - User Testing
+- Notification for new post in the group. Not sent from bob to mitch when happened.
 
 **Relevant Deanin videos I want to watch**
 
