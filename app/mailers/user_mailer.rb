@@ -9,4 +9,9 @@ class UserMailer < Devise::Mailer
     super
   end
 
+  def welcome_email
+    @user = params[:user]
+    mail(to: @user.email, subject: 'Welcome To ShiftMarket')
+  end
+
 end

@@ -3,14 +3,9 @@
 ## CURRENT TODO's
 
 - Omniauth
+
   - deanin vid.. got to 15:00mins in.. hit snag that I need a bundle ID. Appears to be an apple thing. Fuck. Put this on pause. Done all the 'rails code' for the video i believe.. (had to be edited for my api, jwt token auth setup).
-- aws forget email address / mailer
 
-  - Try setting up with guide and RoR guides. May use sendGrid as per TOP instructions.
-  - TODO:
-    - Figure out what "protect_from_forgery prepend: true" is doing, and where to properly put it.. if anywhere at all.
-
-- Time to get Expo up on it's own server?
 - Don't think we need to do the above. As it'll run on apple/anfroid stores..?
 
   - Process:
@@ -28,7 +23,9 @@
   - seems the way to go will be the expo push notification package.. but since to test it all properly it'll require a paid Apple developer account (apparently), I'm going to push this one toward the end.
 - update loading screen and app logo thingy for new colour scheme.
 - User Testing
-- Notification for new post in the group. Not sent from bob to mitch when happened.
+- How to authenticate email?
+- Phone field.. Needed for MVP. Strict user authentication is necessary for this app I believe.
+- pretty up emails.
 
 **Relevant Deanin videos I want to watch**
 

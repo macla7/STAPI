@@ -19,6 +19,8 @@ module Api
           user = User.new(allowed_params)
 
           if user.save
+            UserMailer.with(user: user).welcome_email.deliver_later
+
             render json: render_user(user, client_app), status: :ok
           else
             render json: { errors: user.errors }, status: :unprocessable_entity
