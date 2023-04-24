@@ -1,31 +1,31 @@
 # Look on my works, ye mighty, and despair !
 
+How to switch between development and production:
+
+- Look at the '.env' files of both repo, and change the localhost (or specific IP address) url to the url of the heroku application.
+
 ## CURRENT TODO's
 
-- Omniauth
+Steps to 'Launch':
 
-  - deanin vid.. got to 15:00mins in.. hit snag that I need a bundle ID. Appears to be an apple thing. Fuck. Put this on pause. Done all the 'rails code' for the video i believe.. (had to be edited for my api, jwt token auth setup).
-
-- Don't think we need to do the above. As it'll run on apple/anfroid stores..?
-
-  - Process:
-    1. Figure out toying around with EAS Build.. done. Can now build for ios simulator.
-    2. To follow expo guide on best practices, and implement it all.. One at a time.
-    - to test permissions, want to access on phone.. to change dp and test how it works.. with getting access to photos.. etc.. what i need to do.. for the moment I need to skip as wifi is that bad......
-    - seems we could probably do the EAS Metadata in the apple store dashboard (or something lol).
-    - Up to playing around with status bar (((UP TO HERE)))
-    3. Follow Apple's guide on best practices.
-    4. Figure out toying around with EAS Submit..?
-
-- App and Android store..
-- validation email
+- Process:
+  1. Figure out toying around with EAS Build.. done. Can now build for ios simulator.
+  2. To follow expo guide on best practices, and implement it all.. One at a time.
+  - to test permissions, want to access on phone.. to change dp and test how it works.. with getting access to photos.. etc.. what i need to do.. for the moment I need to skip as wifi is that bad......
+  - seems we could probably do the EAS Metadata in the apple store dashboard (or something lol).
+  - Up to playing around with status bar (((UP TO HERE)))
+  3. Follow Apple's guide on best practices.
+  4. Figure out toying around with EAS Submit..?
 - push notifications
-  - seems the way to go will be the expo push notification package.. but since to test it all properly it'll require a paid Apple developer account (apparently), I'm going to push this one toward the end.
+- seems the way to go will be the expo push notification package.. but since to test it all properly it'll require a paid Apple developer account (apparently), I'm going to push this one toward the end.
+- Omniauth:
+
+  1. deanin vid.. got to 15:00mins in.. hit snag that I need a bundle ID. Appears to be an apple thing. Fuck. Put this on pause. Done all the 'rails code' for the video i believe.. (had to be edited for my api, jwt token auth setup).
+
 - update loading screen and app logo thingy for new colour scheme.
 - User Testing
 - How to authenticate email?
 - Phone field.. Needed for MVP. Strict user authentication is necessary for this app I believe.
-- pretty up emails.
 
 **Relevant Deanin videos I want to watch**
 
