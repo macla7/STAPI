@@ -3,6 +3,23 @@
 How to switch between development and production:
 
 - Look at the '.env' files of both repo, and change the localhost (or specific IP address) url to the url of the heroku application.
+- shiftmarket.com.au
+- localhost:3000
+
+Steps today:
+
+- Change url
+  - test
+- update heroku build for latest API repo
+  - test
+  - figure out notification channel not being live bug. (and likes as well).
+- Edit icon and splash screen for new theme
+  - test
+- Make build following 'creating your first build docs and links'
+  - test on simulator
+- Follow 'Internal distribution' link
+  - Make apple account
+  - test
 
 ## CURRENT TODO's
 
