@@ -13,6 +13,7 @@ Steps today:
 - update heroku build for latest API repo
   - test
   - figure out notification channel not being live bug. (and likes as well).
+  - Fix profile issue
 - Edit icon and splash screen for new theme
   - test
 - Make build following 'creating your first build docs and links'
