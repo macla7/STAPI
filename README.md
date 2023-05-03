@@ -14,6 +14,7 @@ Steps today:
   - test
   - figure out notification channel not being live bug. (and likes as well).
   - Fix profile issue
+  - get buckets working in dev.. then prod.. then change dev back to local.
 - Edit icon and splash screen for new theme
   - test
 - Make build following 'creating your first build docs and links'
