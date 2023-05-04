@@ -10,7 +10,7 @@ class Bid < ApplicationRecord
     return self.user.avatar_url
   end
 
-  def biddor
+  def bidder
     return self.user.name
   end
 end

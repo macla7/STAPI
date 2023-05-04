@@ -8,15 +8,6 @@ How to switch between development and production:
 
 Steps today:
 
-- Change url
-  - test
-- update heroku build for latest API repo
-  - test
-  - figure out notification channel not being live bug. (and likes as well).
-  - Fix profile issue
-  - get buckets working in dev.. then prod.. then change dev back to local.
-- Edit icon and splash screen for new theme
-  - test
 - Make build following 'creating your first build docs and links'
   - test on simulator
 - Follow 'Internal distribution' link
@@ -64,6 +55,7 @@ Steps to 'Launch':
 
 **Non MVP features**
 
+- calendar view
 - Stripe
   - research into Stripe
   - research into pay gem
@@ -111,6 +103,10 @@ But the following articles helped even more I reckon
 -[Docs here](https://github.com/react-native-svg/react-native-svg#use-with-svg-files)
 
 - Need the [transformer](https://github.com/kristerkari/react-native-svg-transformer#installation-and-configuration) too if importing from files.
+
+**S3 Storage**
+
+- heavily based off [this](https://www.honeybadger.io/blog/rails-app-aws-s3/) article.
 
 **ActionCable**
 

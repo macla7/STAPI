@@ -16,7 +16,7 @@ class Post < ApplicationRecord
   scope :past_posts, ->{ where('ends_at < ?', DateTime.current())}
 
   def post_info
-    serializable_hash(include: [:shifts, :likes, comments: {methods: [:avatar_url, :commentor]}, bids: {methods: [:avatar_url, :biddor]}], methods: [:group_name, :postor_name, :avatar_url]) 
+    serializable_hash(include: [:shifts, :likes, comments: {methods: [:avatar_url, :commentor]}, bids: {methods: [:avatar_url, :bidder]}], methods: [:group_name, :postor_name, :avatar_url]) 
   end
 
   def group_name
@@ -32,7 +32,7 @@ class Post < ApplicationRecord
   end
 
   def bids_with_avatars
-    serializable_hash(include: [bids: {methods: [:avatar_url, :biddor]}]) 
+    serializable_hash(include: [bids: {methods: [:avatar_url, :bidder]}]) 
   end
 
   def comments_with_avatars
