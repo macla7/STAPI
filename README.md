@@ -10,6 +10,7 @@ Steps today:
 
 - Make build following 'creating your first build docs and links'
   - test on simulator
+- Move Create Post to onto tab nav.
 - Follow 'Internal distribution' link
   - Make apple account
   - test
@@ -32,7 +33,6 @@ Steps to 'Launch':
 
   1. deanin vid.. got to 15:00mins in.. hit snag that I need a bundle ID. Appears to be an apple thing. Fuck. Put this on pause. Done all the 'rails code' for the video i believe.. (had to be edited for my api, jwt token auth setup).
 
-- update loading screen and app logo thingy for new colour scheme.
 - User Testing
 - How to authenticate email?
 - Phone field.. Needed for MVP. Strict user authentication is necessary for this app I believe.
@@ -56,6 +56,8 @@ Steps to 'Launch':
 **Non MVP features**
 
 - calendar view
+- Put groups under home.
+  - Nest all the group screens under home.
 - Stripe
   - research into Stripe
   - research into pay gem
