@@ -9,9 +9,14 @@ class UserMailer < Devise::Mailer
     super
   end
 
-  def welcome_email
+  # def welcome_email
+  #   @user = params[:user]
+  #   mail(to: @user.email, subject: 'Welcome To ShiftMarket')
+  # end
+
+  def registration_confirmation
     @user = params[:user]
-    mail(to: @user.email, subject: 'Welcome To ShiftMarket')
+    mail(:to => "#{@user.name} <#{@user.email}>", :subject => "Registration Confirmation")
   end
 
 end

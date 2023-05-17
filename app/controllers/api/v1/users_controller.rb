@@ -1,5 +1,6 @@
 class Api::V1::UsersController < ApiController
   before_action :set_user, only: %i[ show edit update destroy ]
+  skip_before_action :doorkeeper_authorize!, only: %i[confirm_email]
 
   # GET /users or /users.json
   def index
@@ -35,8 +36,6 @@ class Api::V1::UsersController < ApiController
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
-    p 'hello from CREAEEETEEE'
-    p user_params
 
     respond_to do |format|
       if @user.save
@@ -67,6 +66,16 @@ class Api::V1::UsersController < ApiController
     respond_to do |format|
       format.html { redirect_to users_url, notice: "User was successfully destroyed." }
       format.json { render json: User.all, status: :ok }
+    end
+  end
+
+  def confirm_email
+    @user = User.find_by_confirm_token(params[:id])
+    if @user
+      @user.email_activate
+      redirect_to confirmed_url(@user)
+    else
+      redirect_to already_confirmed_url
     end
   end
 

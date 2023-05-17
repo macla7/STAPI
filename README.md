@@ -6,27 +6,17 @@ How to switch between development and production:
 - shiftmarket.com.au
 - localhost:3000
 
-Steps today:
-
-- Make build following 'creating your first build docs and links'
-  - test on simulator
-- Move Create Post to onto tab nav.
-- Follow 'Internal distribution' link
-  - Make apple account
-  - test
-
 ## CURRENT TODO's
 
-Steps to 'Launch':
+UNTIL APPLE ACCOUNT
 
-- Process:
-  1. Figure out toying around with EAS Build.. done. Can now build for ios simulator.
-  2. To follow expo guide on best practices, and implement it all.. One at a time.
-  - to test permissions, want to access on phone.. to change dp and test how it works.. with getting access to photos.. etc.. what i need to do.. for the moment I need to skip as wifi is that bad......
-  - seems we could probably do the EAS Metadata in the apple store dashboard (or something lol).
-  - Up to playing around with status bar (((UP TO HERE)))
-  3. Follow Apple's guide on best practices.
-  4. Figure out toying around with EAS Submit..?
+- let's make some damn tests... shesh.
+- email verfication / confirmation on signup
+  - Need to make a basic view hosted by my heroku app... lordy lord. This will be the 'confirmed' page the email links from.
+- Get twilio up and running.
+
+Steps to 'Launch': (ONCE I'VE GOT APPLE ACCOUNT!)
+
 - push notifications
 - seems the way to go will be the expo push notification package.. but since to test it all properly it'll require a paid Apple developer account (apparently), I'm going to push this one toward the end.
 - Omniauth:
@@ -70,8 +60,6 @@ Steps to 'Launch':
 - Using variable font?
 - Maybe 10 or so default DP's to choose from
 - Reacts (likes and what not)
-
-**Do README**
 
 ## Design Notes
 
@@ -139,3 +127,7 @@ But the following articles helped even more I reckon
 **Reset password**
 
 - somewhat based my workflow on suggestions from [this](https://www.truemark.dev/blog/reset-password-in-react-and-rails/) article.
+
+**Email verification flow**
+
+- Heavily based off [this](https://coderwall.com/p/u56rra/ruby-on-rails-user-signup-email-confirmation-tutorial) article

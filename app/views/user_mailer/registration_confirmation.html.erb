@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body style="font-family:Arial;">
+    <h2>Welcome To ShiftMarket <%= @user.name %>!</h2>
+    <p>Thanks for registering! To confirm your registration click the URL below.</p>
+    <%= button_to "Confirm Email", action="http://localhost:3000/api/v1/users/" + @user.confirm_token + "/confirm_email", method: "post"%>
+    <p>Regards,</p>
+    <p>SM Team</p>
+  </body>
+</html>

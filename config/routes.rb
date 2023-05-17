@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :memberships
   resources :groups
   resources :posts, :books
+  get 'users/:id/confirmed', to: 'users#confirmed', as: 'confirmed'
+  get 'already_confirmed', to: 'users#already_confirmed'
+
 
   devise_for :users, controllers: { passwords: 'users/passwords' }
   root 'pages#home'

@@ -8,7 +8,11 @@ namespace :api do
       post '/session-data', to: 'sessions#create'
     end
 
-    resources :users
+    resources :users do
+      member do
+        post :confirm_email
+      end
+    end
     resources :likes
     resources :bids
     resources :notification_blueprints
