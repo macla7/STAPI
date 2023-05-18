@@ -8,24 +8,19 @@ How to switch between development and production:
 
 ## CURRENT TODO's
 
-UNTIL APPLE ACCOUNT
-
-- let's make some damn tests... shesh.
-- email verfication / confirmation on signup
-  - Need to make a basic view hosted by my heroku app... lordy lord. This will be the 'confirmed' page the email links from.
-- Get twilio up and running.
-
 Steps to 'Launch': (ONCE I'VE GOT APPLE ACCOUNT!)
 
+- point expo project at heroku.
+- Make SendGrid backup and running for prod.
 - push notifications
+- Edit splash screen and icon for ShiftSwaps.
 - seems the way to go will be the expo push notification package.. but since to test it all properly it'll require a paid Apple developer account (apparently), I'm going to push this one toward the end.
 - Omniauth:
 
   1. deanin vid.. got to 15:00mins in.. hit snag that I need a bundle ID. Appears to be an apple thing. Fuck. Put this on pause. Done all the 'rails code' for the video i believe.. (had to be edited for my api, jwt token auth setup).
 
 - User Testing
-- How to authenticate email?
-- Phone field.. Needed for MVP. Strict user authentication is necessary for this app I believe.
+- let's make some damn tests... shesh.
 
 **Relevant Deanin videos I want to watch**
 
@@ -33,7 +28,7 @@ Steps to 'Launch': (ONCE I'VE GOT APPLE ACCOUNT!)
 - N+1 Query And Performance Optizizations
 - Devise Onboarding with Wicked Gem
 - Monethly Subscriptions with Stripe and Pay Gem
-- The VSCODe Rails Extentions Used in This Series
+- The VSCODE Rails Extentions Used in This Series
 - Notificaiton Sounds when Messages are Sent in Chat
 
 **Misc Known Issues**
