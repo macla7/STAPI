@@ -25,6 +25,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :notifications, -> { where actioned: nil }, foreign_key: 'recipient_id'
   has_many :notification_origins, foreign_key: 'notifier_id'
+  has_many :push_tokens
 
   after_commit :add_default_avatar, on: %i[create update]
 

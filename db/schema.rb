@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_16_091123) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_22_081901) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -184,6 +184,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_16_091123) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "push_tokens", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "device_id", null: false
+    t.string "push_token", default: ""
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_push_tokens_on_user_id"
+  end
+
   create_table "shifts", force: :cascade do |t|
     t.string "position"
     t.datetime "start"
@@ -232,5 +241,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_16_091123) do
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "posts", "groups"
   add_foreign_key "posts", "users"
+  add_foreign_key "push_tokens", "users"
   add_foreign_key "shifts", "posts"
 end

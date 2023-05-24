@@ -9,6 +9,7 @@ namespace :api do
     end
 
     resources :users do
+      resources :push_tokens
       member do
         post :confirm_email
       end

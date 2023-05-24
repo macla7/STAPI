@@ -10,9 +10,10 @@ How to switch between development and production:
 
 Steps to 'Launch': (ONCE I'VE GOT APPLE ACCOUNT!)
 
+- notifications up and running.
+- fix photos for dev on phone...
 - point expo project at heroku.
 - Make SendGrid backup and running for prod.
-- push notifications
 - Edit splash screen and icon for ShiftSwaps.
 - seems the way to go will be the expo push notification package.. but since to test it all properly it'll require a paid Apple developer account (apparently), I'm going to push this one toward the end.
 - Omniauth:

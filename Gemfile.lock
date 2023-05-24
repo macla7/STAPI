@@ -133,6 +133,10 @@ GEM
     dry-core (0.7.1)
       concurrent-ruby (~> 1.0)
     erubi (1.10.0)
+    ethon (0.16.0)
+      ffi (>= 1.15.0)
+    exponent-server-sdk (0.1.0)
+      typhoeus
     faraday (2.7.2)
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
@@ -289,6 +293,8 @@ GEM
     turbo-rails (1.0.1)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
+    typhoeus (1.4.0)
+      ethon (>= 0.9.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     version_gem (1.1.1)
@@ -330,6 +336,7 @@ DEPENDENCIES
   doorkeeper (~> 5.5)
   doorkeeper-jwt
   dotenv-rails
+  exponent-server-sdk
   image_processing (~> 1.2)
   importmap-rails
   jbuilder

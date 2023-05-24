@@ -4,7 +4,7 @@ class Notification < ApplicationRecord
 
   default_scope { order(created_at: :desc) }
 
-  include NotificationHelpers
+  include NotificationsHelper
 
   def notification_info
     self.as_json.merge({
