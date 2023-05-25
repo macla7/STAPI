@@ -8,9 +8,7 @@ Rails.application.configure do
     Dotenv::Railtie.load
   end
 
-  Rails.application.routes.default_url_options = {
-    host: ENV['REGULAR_URL']
-  }
+  Rails.application.routes.default_url_options = { host: ENV['HOST'], port: 3000 }
 
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development

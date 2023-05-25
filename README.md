@@ -10,8 +10,6 @@ How to switch between development and production:
 
 Steps to 'Launch': (ONCE I'VE GOT APPLE ACCOUNT!)
 
-- notifications up and running.
-- fix photos for dev on phone...
 - point expo project at heroku.
 - Make SendGrid backup and running for prod.
 - Edit splash screen and icon for ShiftSwaps.
