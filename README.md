@@ -12,8 +12,6 @@ Steps to 'Launch': (ONCE I'VE GOT APPLE ACCOUNT!)
 
 - point expo project at heroku.
 - Make SendGrid backup and running for prod.
-- Edit splash screen and icon for ShiftSwaps.
-- seems the way to go will be the expo push notification package.. but since to test it all properly it'll require a paid Apple developer account (apparently), I'm going to push this one toward the end.
 - Omniauth:
 
   1. deanin vid.. got to 15:00mins in.. hit snag that I need a bundle ID. Appears to be an apple thing. Fuck. Put this on pause. Done all the 'rails code' for the video i believe.. (had to be edited for my api, jwt token auth setup).

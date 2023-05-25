@@ -42,6 +42,8 @@ class Api::V1::PushTokensController < ApiController
     set_user_with_pushToken
     set_pushToken
 
+    @pushToken.touch
+
     respond_to do |format|
       if @pushToken.update(pushToken_params)
         format.json { render json: { currentPushToken: @pushToken, pushTokens: @user.push_tokens }, status: :ok }
