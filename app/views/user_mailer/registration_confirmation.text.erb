@@ -2,7 +2,7 @@ Welcome To ShiftMarket <%= @user.name %>!
 
 Thanks for registering! To confirm your registration click the URL below.
 
-<%= button_to "Confirm Email", action="http://localhost:3000/api/v1/users/" + @user.confirm_token + "/confirm_email", method: "post"%>
+<%= button_to "Confirm Email", action="http://shiftmarket.com.au/api/v1/users/" + @user.confirm_token + "/confirm_email", method: "post"%>
 
 Regards,
 ShiftSwaps Team
