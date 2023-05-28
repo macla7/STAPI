@@ -3,8 +3,8 @@
 How to switch between development and production:
 
 - Look at the '.env' files of both repo, and change the localhost (or specific IP address) url to the url of the heroku application.
-- shiftmarket.com.au
-- localhost:3000
+- www.shiftmarket.com.au
+- _IP ADDRESS_:3000
 
 ## CURRENT TODO's
 

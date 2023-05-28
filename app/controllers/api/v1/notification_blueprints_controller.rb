@@ -30,7 +30,8 @@ class Api::V1::NotificationBlueprintsController < ApiController
           end
           p 'IN NOTIFICATION, THE MESSAGES ARE'
           p messages
-          p 'for: ' + current_user
+          p 'for: '
+          p current_user
 
           handler = client.send_messages(messages)
           broadcast notification
