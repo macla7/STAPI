@@ -8,11 +8,7 @@ How to switch between development and production:
 
 ## CURRENT TODO's
 
-Steps to 'Launch': (ONCE I'VE GOT APPLE ACCOUNT!)
-
-- point expo project at heroku.
 - Then submit to apple store (where current submission is)
-- Make SendGrid backup and running for prod.
 - Omniauth:
 
   1. deanin vid.. got to 15:00mins in.. hit snag that I need a bundle ID. Appears to be an apple thing. Fuck. Put this on pause. Done all the 'rails code' for the video i believe.. (had to be edited for my api, jwt token auth setup).
