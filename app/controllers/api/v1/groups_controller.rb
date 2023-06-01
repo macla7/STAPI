@@ -14,7 +14,7 @@ class Api::V1::GroupsController < ApiController
 
     groupsWithInfo = []
     @otherGroups.includes(:memberships).each do |group|
-      groupsWithInfo.push(group.group_info)
+      groupsWithInfo.push(group.data)
     end
 
     render json: groupsWithInfo
@@ -25,7 +25,7 @@ class Api::V1::GroupsController < ApiController
 
     groupsWithInfo = []
     @myGroups.includes(:memberships).each do |group|
-      groupsWithInfo.push(group.group_info)
+      groupsWithInfo.push(group.data)
     end
     render json: groupsWithInfo
   end

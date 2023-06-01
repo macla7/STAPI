@@ -7,7 +7,7 @@ class Api::V1::PostsController < ApiController
     postWithAssociations = []
 
     @group.posts.active.includes(:bids, :likes, :shifts).each do |post|
-      postWithAssociations.push(post.post_info)
+      postWithAssociations.push(post.data_w_likes_bids_comments)
     end
     
     render json: postWithAssociations
@@ -18,14 +18,14 @@ class Api::V1::PostsController < ApiController
 
     postWithAssociations = []
     @posts.active.includes(:bids, :likes, :shifts).each do |post|
-      postWithAssociations.push(post.post_info)
+      postWithAssociations.push(post.data_w_likes_bids_comments)
     end
     render json: postWithAssociations
   end
 
   # GET /posts/1 or /posts/1.json
   def show
-    render json: @post.post_info
+    render json: @post.data_w_likes_bids_comments
   end
 
   # GET /posts/new
@@ -45,7 +45,7 @@ class Api::V1::PostsController < ApiController
     p @post
     respond_to do |format|
       if @post.save!
-        format.json { render json: @post.post_info, status: :ok }
+        format.json { render json: @post.data_w_likes_bids_comments, status: :ok }
       else
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end

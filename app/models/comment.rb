@@ -1,6 +1,4 @@
 class Comment < ApplicationRecord
-  include ActiveModel::Serializers::JSON
-  
   belongs_to :post
   belongs_to :user
 
@@ -10,7 +8,7 @@ class Comment < ApplicationRecord
     return self.user.avatar_url
   end
 
-  def commentor
+  def commentor_name
     return self.user.name
   end
 end

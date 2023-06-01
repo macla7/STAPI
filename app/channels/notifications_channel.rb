@@ -1,5 +1,4 @@
 class NotificationsChannel < ApplicationCable::Channel
-  include ActiveModel::Serializers::JSON
   def subscribed
     stop_all_streams
     user = User.find(params[:user])

@@ -11,10 +11,11 @@ class Group < ApplicationRecord
     return memberships.is_admin.map { |member| member.user}
   end
 
-  def group_info
+  def data
     serializable_hash(methods: :number_of_memberships) 
   end
 
+  # Behaviour in DTO?
   def number_of_memberships
     return self.memberships.length()
   end

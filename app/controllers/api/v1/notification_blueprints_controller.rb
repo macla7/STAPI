@@ -63,6 +63,6 @@ class Api::V1::NotificationBlueprintsController < ApiController
 
     def broadcast notification
       recipient = User.find(notification.recipient_id)
-      NotificationsChannel.broadcast_to(recipient, notification.notification_info)
+      NotificationsChannel.broadcast_to(recipient, notification.data)
     end
 end

@@ -6,7 +6,10 @@ class Notification < ApplicationRecord
 
   include NotificationsHelper
 
-  def notification_info
+  def data
+    # I'm not sure if these are 'train wrecks' as their DTO's.. perhaps getting notifier_avatar_url is knowing too
+    # much 'behaviour' from a object two away.. Yet these DTO's are natually heavily coupled.. so I don't think
+    # it's a big deal. avatar_url is more akin to data retrieval than behaviour anyway I reckon..
     self.as_json.merge({
       notification_blueprint: self.notification_blueprint,
       notification_origin: self.notification_blueprint.notification_origin,

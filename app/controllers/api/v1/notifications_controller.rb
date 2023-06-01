@@ -5,7 +5,7 @@ class Api::V1::NotificationsController < ApiController
   def index
     notifications = []
     current_user.notifications.includes(notification_blueprint: :notification_origin).each do |notification|
-      notifications.push(notification.notification_info)
+      notifications.push(notification.data)
     end
     render json: notifications
   end
@@ -49,7 +49,7 @@ class Api::V1::NotificationsController < ApiController
         # format.json { render :show, status: :ok, location: @notification }
         notifications = []
         current_user.notifications.includes(notification_blueprint: :notification_origin).each do |notification|
-          notifications.push(notification.notification_info)
+          notifications.push(notification.data)
         end
         format.json { render json: notifications, status: :ok }
       else

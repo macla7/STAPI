@@ -29,7 +29,7 @@ class User < ApplicationRecord
 
   after_commit :add_default_avatar, on: %i[create update]
 
-  before_create :confirmation_token
+  before_create :create_confirmation_token_if_blank
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -66,17 +66,17 @@ class User < ApplicationRecord
     )
   end
 
-  def user_info
+  def data
     serializable_hash(methods: :avatar_url)
   end
 
-  def confirmation_token
+  def create_confirmation_token_if_blank
     if self.confirm_token.blank?
         self.confirm_token = SecureRandom.urlsafe_base64.to_s
     end
   end
 
-  def email_activate
+  def authenticated_email
     self.email_confirmed = true
     self.confirm_token = nil
     save!(:validate => false)

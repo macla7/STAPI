@@ -6,7 +6,7 @@ class Api::V1::MembershipsController < ApiController
     set_group
     membershipsWithUserDetails = []
     @group.memberships.includes(:user).each do |member|
-      membershipsWithUserDetails.push(member.member_info)
+      membershipsWithUserDetails.push(member.data)
     end
     render json: membershipsWithUserDetails
   end

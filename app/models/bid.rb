@@ -1,6 +1,4 @@
 class Bid < ApplicationRecord
-  include ActiveModel::Serializers::JSON
-  
   belongs_to :post
   belongs_to :user
 
@@ -10,7 +8,7 @@ class Bid < ApplicationRecord
     return self.user.avatar_url
   end
 
-  def bidder
+  def bidder_name
     return self.user.name
   end
 end

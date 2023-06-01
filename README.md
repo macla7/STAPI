@@ -8,6 +8,22 @@ How to switch between development and production:
 
 ## CURRENT TODO's
 
+- Check names of:
+  - Methods
+  - Objects and variables
+  - functions
+    In:
+  - Models
+  - Controllers
+  - JavaScript
+- Refactor functions to be:
+  - Smaller
+  - 1 or 2 parameters
+  - dependency injection
+  - No train wrecks
+- Address possible active record / model design issues?
+  - Is my business logic in the data structures..?
+- Rspec tests.
 - Then submit to apple store (where current submission is)
 - Omniauth:
 

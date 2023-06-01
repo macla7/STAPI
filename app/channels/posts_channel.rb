@@ -1,5 +1,4 @@
 class PostsChannel < ApplicationCable::Channel
-  include ActiveModel::Serializers::JSON
   def subscribed
     stop_all_streams
     post = Post.find(params[:post])

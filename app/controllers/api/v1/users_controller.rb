@@ -12,7 +12,7 @@ class Api::V1::UsersController < ApiController
 
     relevant_users_with_details = []
     @relevant_users.each do |user|
-      relevant_users_with_details.push(user.user_info)
+      relevant_users_with_details.push(user.data)
     end
     render json: relevant_users_with_details
   end
@@ -20,7 +20,7 @@ class Api::V1::UsersController < ApiController
   # GET /users/1 or /users/1.json
   def show
     respond_to do |format|
-      format.json { render json: @user.user_info, status: :ok }
+      format.json { render json: @user.data, status: :ok }
     end
   end
 
@@ -72,7 +72,7 @@ class Api::V1::UsersController < ApiController
   def confirm_email
     @user = User.find_by_confirm_token(params[:id])
     if @user
-      @user.email_activate
+      @user.authenticated_email
       redirect_to confirmed_url(@user)
     else
       redirect_to already_confirmed_url
