@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  # GET / (root)
   def home
     @application = Doorkeeper::Application.find_by(name: 'Web Client')
 

@@ -23,6 +23,9 @@ How to switch between development and production:
   - No train wrecks
 - Address possible active record / model design issues?
   - Is my business logic in the data structures..?
+- navigation bug on post creation
+- do we need the pages/root?
+  - do we want a root or any non-api routes?
 - Rspec tests.
 - Then submit to apple store (where current submission is)
 - Omniauth:
