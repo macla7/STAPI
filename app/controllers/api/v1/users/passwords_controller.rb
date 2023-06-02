@@ -1,6 +1,6 @@
-# frozen_string_literal: true
+class Api::V1::Users::PasswordsController < Devise::PasswordsController
+  skip_before_action :verify_authenticity_token
 
-class Users::PasswordsController < Devise::PasswordsController
   # GET /resource/password/new
   # def new
   #   super
@@ -9,6 +9,10 @@ class Users::PasswordsController < Devise::PasswordsController
   # POST /resource/password
   def create
     self.resource = resource_class.send_reset_password_instructions(resource_params)
+    p 'hello from passwordssssss'
+    p self.resource
+    p resource_params
+    p 'did it work?'
     yield resource if block_given?
 
     if successfully_sent?(resource)
@@ -72,7 +76,7 @@ class Users::PasswordsController < Devise::PasswordsController
     end
   end
 
-  # protected
+  protected
 
   # def after_resetting_password_path_for(resource)
   #   super(resource)
@@ -82,4 +86,8 @@ class Users::PasswordsController < Devise::PasswordsController
   # def after_sending_reset_password_instructions_path_for(resource_name)
   #   super(resource_name)
   # end
+
+  def resource_params
+    params.require(:user).permit(:email, :password, :password_confirmation, :reset_password_token)
+  end
 end

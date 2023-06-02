@@ -1,6 +1,9 @@
 namespace :api do
   namespace :v1 do
-    # devise_for :users, skip: :registration
+
+    devise_for :users, controllers: {
+        passwords: 'api/v1/users/passwords'
+      }, skip: :registration
     
     scope :users, module: :users do
       post '/', to: 'registrations#create', as: :user_registration
@@ -11,9 +14,10 @@ namespace :api do
     resources :users do
       resources :push_tokens
       member do
-        post :confirm_email
+        post '/token/:token/confirm_email', to: 'users#confirm_email', as: 'confirm_email'
       end
     end
+
     resources :likes
     resources :bids
     resources :notification_blueprints
