@@ -22,13 +22,11 @@ class Api::V1::CommentsController < ApiController
 
   # POST /comments or /comments.json
   def create
-    p 'TRYING TO MAKE A COMMENT!!!'
     set_post_with_comment
     @comment = current_user.comments.new(comment_params)
 
     respond_to do |format|
       if @comment.save
-        p 'TRYING TO MAKE A COMMENT!!!!!!'
         broadcast @post
         format.json { render json: @post.comments, status: :ok }
       else

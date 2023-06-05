@@ -6,7 +6,7 @@
   <body style="font-family:Arial;">
     <h2>Welcome To ShiftMarket <%= @user.name %>!</h2>
     <p>Thanks for registering! To confirm your registration click the URL below.</p>
-    <%= button_to "Confirm Email", action="http://shiftmarket.com.au/api/v1/users/" + @user.id + "/token/" + @user.confirm_token + "/confirm_email", method: "post"%>
+    <%= button_to "Confirm Email", action="http://www.shiftmarket.com.au/api/v1/users/" + @user.id.to_s + "/token/" + @user.confirm_token + "/confirm_email", method: "post"%>
     <p>Regards,</p>
     <p>ShiftSwaps Team</p>
   </body>

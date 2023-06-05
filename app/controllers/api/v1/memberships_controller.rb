@@ -4,11 +4,7 @@ class Api::V1::MembershipsController < ApiController
   # GET /memberships or /memberships.json
   def index
     set_group
-    membershipsWithUserDetails = []
-    @group.memberships.includes(:user).each do |member|
-      membershipsWithUserDetails.push(member.data)
-    end
-    render json: membershipsWithUserDetails
+    render json: Membership.get_data_for_array(@group.memberships.includes(:user))
   end
 
   # GET /memberships/1 or /memberships/1.json
@@ -32,8 +28,6 @@ class Api::V1::MembershipsController < ApiController
       if @membership.save
         format.json { render json: @membership, status: :ok }
       else
-        p 'ON FAILING'
-        p @membership.errors
         format.json { render json: @membership.errors, status: :unprocessable_entity }
       end
     end

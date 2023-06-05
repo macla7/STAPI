@@ -2,19 +2,10 @@ class Api::V1::UsersController < ApiController
   before_action :set_user, only: %i[ show edit update destroy ]
   skip_before_action :doorkeeper_authorize!, only: %i[confirm_email]
 
-  # GET /users or /users.json
+  # GET /groups/${groupId}/users or /groups/${groupId}/users.json
   def index
     set_group
-    @groups_users = @group.users
-    @invited_users = @group.invited_users
-    @all_users = User.all
-    @relevant_users = (@all_users - @groups_users - @invited_users)
-
-    relevant_users_with_details = []
-    @relevant_users.each do |user|
-      relevant_users_with_details.push(user.data)
-    end
-    render json: relevant_users_with_details
+    render json: User.get_data_for_array(@group.users_not_in_group)
   end
 
   # GET /users/1 or /users/1.json
@@ -48,8 +39,6 @@ class Api::V1::UsersController < ApiController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-    p @user
-    p 'HELLLLLOOOO'
     respond_to do |format|
       if @user.update(user_params)
         format.json { render json: @user, status: :ok }
@@ -70,12 +59,13 @@ class Api::V1::UsersController < ApiController
   end
 
   def confirm_email
-    @user = User.find_by_confirm_token(params[:id])
+    @user = User.find_by_confirm_token(params[:token])
     if @user
       @user.authenticated_email
       redirect_to confirmed_url(@user)
     else
-      redirect_to already_confirmed_url
+      @user = User.find(params[:id])
+      redirect_to already_confirmed_url(@user)
     end
   end
 

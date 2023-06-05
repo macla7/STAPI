@@ -4,7 +4,6 @@ class Api::V1::LikesController < ApiController
   # GET /likes or /likes.json
   def index
     set_post
-    @likes = Like.all
     render json: @post.likes
   end
 

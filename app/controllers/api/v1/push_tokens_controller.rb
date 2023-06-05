@@ -3,9 +3,7 @@ class Api::V1::PushTokensController < ApiController
 
   # GET /push_tokens or /push_tokens.json
   def index
-    set_user
-
-    render json: @user.push_tokens
+    render json: current_user.push_tokens
   end
 
   # GET /push_tokens/1 or /push_tokens/1.json
@@ -30,7 +28,7 @@ class Api::V1::PushTokensController < ApiController
 
     respond_to do |format|
       if @pushToken.save
-        format.json { render json: { currentPushToken: @pushToken, pushTokens: @user.push_tokens }, status: :ok }
+        format.json { render json: { currentPushToken: @pushToken, pushTokens: current_user.push_tokens }, status: :ok }
       else
         format.json { render json: @pushToken.errors, status: :unprocessable_entity }
       end
@@ -39,14 +37,13 @@ class Api::V1::PushTokensController < ApiController
 
   # PATCH/PUT /push_tokens/1 or /push_tokens/1.json
   def update
-    set_user_with_pushToken
     set_pushToken
 
     @pushToken.touch
 
     respond_to do |format|
       if @pushToken.update(pushToken_params)
-        format.json { render json: { currentPushToken: @pushToken, pushTokens: @user.push_tokens }, status: :ok }
+        format.json { render json: { currentPushToken: @pushToken, pushTokens: current_user.push_tokens }, status: :ok }
       else
         format.json { render json: @pushToken.errors, status: :unprocessable_entity }
       end
@@ -55,13 +52,12 @@ class Api::V1::PushTokensController < ApiController
 
   # DELETE /push_tokens or /push_tokens.json
   def destroy
-    set_user_with_pushToken
     set_pushToken
 
     @pushToken.destroy
 
     respond_to do |format|
-      format.json { render json: @user.push_tokens, status: :ok }
+      format.json { render json: current_user.push_tokens, status: :ok }
     end
   end
 

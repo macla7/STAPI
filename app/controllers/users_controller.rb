@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy confirmed]
+  before_action :set_user, only: %i[ show edit update destroy confirmed already_confirmed]
 
   # GET /confirmed/1
   def confirmed
+  end
+
+  # GET /already_confirmed/1
+  def already_confirmed
   end
 
   # GET /users or /users.json

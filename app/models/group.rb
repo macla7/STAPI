@@ -1,4 +1,6 @@
 class Group < ApplicationRecord
+  extend SharedArrayMethods
+
   has_many :memberships, :dependent => :destroy
   has_many :users, through: :memberships
   has_many :requests, -> { where request: true }, class_name: 'Invite'
@@ -19,5 +21,13 @@ class Group < ApplicationRecord
   def number_of_memberships
     return self.memberships.length()
   end
-  
+
+  def users_not_in_group
+    groups_users = self.users
+    invited_users = self.invited_users
+    all_users = User.all
+    outside_group_users = (all_users - groups_users - invited_users)
+    return outside_group_users
+  end
+
 end

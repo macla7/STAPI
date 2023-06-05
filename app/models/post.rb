@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  extend SharedArrayMethods
+
   belongs_to :user
   belongs_to :group
   has_many :likes, :dependent => :destroy
@@ -14,7 +16,7 @@ class Post < ApplicationRecord
   scope :active, ->{ where('ends_at > ?', DateTime.current()) }
   scope :past_posts, ->{ where('ends_at < ?', DateTime.current())}
 
-  def data_w_likes_bids_comments
+  def data
     serializable_hash(include: [:shifts, :likes, comments: {methods: [:avatar_url, :commentor_name]}, bids: {methods: [:avatar_url, :bidder_name]}], methods: [:group_name, :postor_name, :avatar_url]) 
   end
 

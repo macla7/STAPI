@@ -9,14 +9,9 @@ class Api::V1::Users::PasswordsController < Devise::PasswordsController
   # POST /resource/password
   def create
     self.resource = resource_class.send_reset_password_instructions(resource_params)
-    p 'hello from passwordssssss'
-    p self.resource
-    p resource_params
-    p 'did it work?'
     yield resource if block_given?
 
     if successfully_sent?(resource)
-      # respond_with({}, location: after_sending_reset_password_instructions_path_for(resource_name))
       render json: { emailValidity: true}
     else
       render json: { emailValidity: false}
@@ -56,22 +51,18 @@ class Api::V1::Users::PasswordsController < Devise::PasswordsController
     yield resource if block_given?
 
     respond_to do |format|
+      # TODO: Would this be where i put some DB protections on password..?
       if resource.errors.empty?
         resource.unlock_access! if unlockable?(resource)
+        # TODO: Not fully accross what's going on in this if...
         if Devise.sign_in_after_reset_password
           flash_message = resource.active_for_authentication? ? :updated : :updated_not_active
-          # set_flash_message!(:notice, flash_message)
-          # resource.after_database_authentication
-          # sign_in(resource_name, resource)
           format.json { render json: {passwordValidity: true, flash_message: {password: [flash_message]}, email: resource.email}, status: :ok }
         else
           format.json { render json: {passwordValidity: true, flash_message: {password: [:updated_not_active]}}, status: :ok }
         end
-        # respond_with resource, location: after_resetting_password_path_for(resource)
       else
-        # set_minimum_password_length
         format.json { render json: {passwordValidity: false, flash_message: resource.errors}, status: :unprocessable_entity }
-        # respond_with resource
       end
     end
   end

@@ -1,4 +1,6 @@
 class Membership < ApplicationRecord
+  extend SharedArrayMethods
+  
   belongs_to :user
   belongs_to :group
 
@@ -14,4 +16,5 @@ class Membership < ApplicationRecord
   def data
     serializable_hash(include: [user: {methods: :avatar_url}]) 
   end
+  
 end

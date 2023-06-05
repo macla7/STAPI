@@ -3,11 +3,7 @@ class Api::V1::NotificationsController < ApiController
 
   # GET /notifications or /notifications.json
   def index
-    notifications = []
-    current_user.notifications.includes(notification_blueprint: :notification_origin).each do |notification|
-      notifications.push(notification.data)
-    end
-    render json: notifications
+    render json: Notification.get_data_for_array(current_user.notifications.includes(notification_blueprint: :notification_origin))
   end
 
   # GET /notifications/1 or /notifications/1.json
@@ -32,10 +28,7 @@ class Api::V1::NotificationsController < ApiController
 
     respond_to do |format|
       if @notification.save
-        # create associated membership
-        @membership = current_user.memberships.create(notification_id: @notification.id, status: 0, role: 0)
         format.json { render json: Notification.all, status: :ok }
-        #format.json { render :show, status: :created, location: @notification }
       else
         format.json { render json: @notification.errors, status: :unprocessable_entity }
       end
@@ -47,10 +40,7 @@ class Api::V1::NotificationsController < ApiController
     respond_to do |format|
       if @notification.update(notification_params)
         # format.json { render :show, status: :ok, location: @notification }
-        notifications = []
-        current_user.notifications.includes(notification_blueprint: :notification_origin).each do |notification|
-          notifications.push(notification.data)
-        end
+        notifications = Notification.get_data_for_array(current_user.notifications.includes(notification_blueprint: :notification_origin))
         format.json { render json: notifications, status: :ok }
       else
         format.json { render json: @notification.errors, status: :unprocessable_entity }

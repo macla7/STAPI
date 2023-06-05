@@ -4,13 +4,11 @@ class Api::V1::ShiftsController < ApiController
   # GET /shifts or /shifts.json
   def index
     set_post
-    @shifts = Shift.all
     render json: @post.shifts
   end
 
   # GET /shifts/1 or /shifts/1.json
   def show
-
   end
 
   # GET /shifts/new

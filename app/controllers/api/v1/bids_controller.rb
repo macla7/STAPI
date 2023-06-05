@@ -4,7 +4,6 @@ class Api::V1::BidsController < ApiController
   # GET /bids or /bids.json
   def index
     set_post
-    @bids = Bid.all
     render json: @post.bids
   end
 

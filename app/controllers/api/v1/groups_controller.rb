@@ -8,37 +8,16 @@ class Api::V1::GroupsController < ApiController
 
   # GET /groups or /groups.json
   def other_groups
-    @myGroups = current_user.groups
-    @allGroups = Group.all
-    @otherGroups = Group.where(id: (@allGroups - @myGroups).map(&:id))
-
-    groupsWithInfo = []
-    @otherGroups.includes(:memberships).each do |group|
-      groupsWithInfo.push(group.data)
-    end
-
-    render json: groupsWithInfo
+    render json: Group.get_data_for_array(current_user.not_in_groups.includes(:memberships))
   end
 
+  # GET '/myGroups'
   def my_groups
-    @myGroups = current_user.groups
-
-    groupsWithInfo = []
-    @myGroups.includes(:memberships).each do |group|
-      groupsWithInfo.push(group.data)
-    end
-    render json: groupsWithInfo
+    render json: Group.get_data_for_array(current_user.groups.includes(:memberships))
   end
 
   # GET /groups/1 or /groups/1.json
   def show
-    members = @group.memberships
-    requests = @group.requests
-    render json: {
-      group: @group,
-      members: members,
-      requests: requests
-    }
   end
 
   # GET /groups/new

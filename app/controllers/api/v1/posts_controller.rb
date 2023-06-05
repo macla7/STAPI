@@ -1,31 +1,21 @@
 class Api::V1::PostsController < ApiController
   before_action :set_post, only: %i[ show edit update destroy ]
 
-  # GET /posts or /posts.json
+  # GET /groups/${groupId}/posts or /groups/${groupId}/posts.json
   def index
     set_group
-    postWithAssociations = []
-
-    @group.posts.active.includes(:bids, :likes, :shifts).each do |post|
-      postWithAssociations.push(post.data_w_likes_bids_comments)
-    end
-    
-    render json: postWithAssociations
+    render json: Post.get_data_for_array(@group.posts.active.includes(:bids, :likes, :shifts))
   end
 
   def index_home
     @posts = Post.joins(group: :memberships).where('memberships.user_id = ?', current_user.id)
 
-    postWithAssociations = []
-    @posts.active.includes(:bids, :likes, :shifts).each do |post|
-      postWithAssociations.push(post.data_w_likes_bids_comments)
-    end
-    render json: postWithAssociations
+    render json: Post.get_data_for_array(@posts.active.includes(:bids, :likes, :shifts))
   end
 
   # GET /posts/1 or /posts/1.json
   def show
-    render json: @post.data_w_likes_bids_comments
+    render json: @post.data
   end
 
   # GET /posts/new
@@ -40,12 +30,10 @@ class Api::V1::PostsController < ApiController
   # POST /posts or /posts.json
   def create
     @post = current_user.posts.new(post_params)
-    p current_user
-    p 'bing'
-    p @post
+
     respond_to do |format|
       if @post.save!
-        format.json { render json: @post.data_w_likes_bids_comments, status: :ok }
+        format.json { render json: @post.data, status: :ok }
       else
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end

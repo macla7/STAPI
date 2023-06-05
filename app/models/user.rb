@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  extend SharedArrayMethods
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -80,5 +82,12 @@ class User < ApplicationRecord
     self.email_confirmed = true
     self.confirm_token = nil
     save!(:validate => false)
+  end
+
+  def not_in_groups
+    userInGroups = self.groups
+    allGroups = Group.all
+    otherGroups = Group.where(id: (allGroups - userInGroups).map(&:id)) 
+    return otherGroups
   end
 end
