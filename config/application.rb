@@ -19,6 +19,17 @@ module DoorkeeperTutorial
 
     config.middleware.use config.session_store, config.session_options
 
+    # custom code from end of https://www.youtube.com/watch?v=2jX-FLcznDE&list=PLS6F722u-R6Ik3fbeLXbSclWkT6Qsp9ng&ab_channel=CJAvilla
+    config.generators do |g|
+      g.test_framework(
+        :rspec,
+        fixtures: false,
+        view_specs: false,
+        helper_specs: false,
+        routing_specs: false,
+      )
+    end
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

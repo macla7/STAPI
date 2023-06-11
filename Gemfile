@@ -48,7 +48,7 @@ gem "bootsnap", require: false
 # gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-gem "image_processing", "~> 1.2"
+# gem "image_processing", "~> 1.2"
 
 gem 'aws-sdk-s3'
 
@@ -59,6 +59,10 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 
   gem "letter_opener"
+
+  gem 'rspec-rails'
+
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -96,4 +100,5 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 
 gem 'omniauth-rails_csrf_protection'
+
 

@@ -9,24 +9,15 @@ How to switch between development and production:
 ## CURRENT TODO's
 
 - Check names of:
-  - Methods
-  - Objects and variables
-  - functions
-    In:
-  - Models
-  - Controllers
   - JavaScript
-- Refactor functions to be:
-  - Smaller
-  - 1 or 2 parameters
-  - dependency injection
-  - No train wrecks
-- Address possible active record / model design issues?
-  - Is my business logic in the data structures..?
-- navigation bug on post creation
+    - cleaning up the non-used API calls.
+    - cleaning up the state and slices.
 - do we need the pages/root?
   - do we want a root or any non-api routes?
 - Rspec tests.
+  - watch up to 3rd video in this guys series (about models)
+  - go over my past saved bookmarks on rspec.
+  - create the rest of my model tests
 - Then submit to apple store (where current submission is)
 - Omniauth:
 
