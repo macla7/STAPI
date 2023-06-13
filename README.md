@@ -8,6 +8,7 @@ How to switch between development and production:
 
 ## CURRENT TODO's
 
+- Figure out a user Flow.
 - Check names of:
   - JavaScript
     - cleaning up the non-used API calls.
@@ -25,6 +26,7 @@ How to switch between development and production:
 
 - User Testing
 - let's make some damn tests... shesh.
+- add look at specific post ability from groupstack? THought it was already there
 
 **Relevant Deanin videos I want to watch**
 
