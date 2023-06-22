@@ -6,9 +6,9 @@ class Api::V1::GroupsController < ApiController
     render json: @groups
   end
 
-  # GET /groups or /groups.json
+  # GET /otherGroups or /otherGroups.json
   def other_groups
-    render json: Group.get_data_for_array(current_user.not_in_groups.includes(:memberships))
+    render json: Group.get_data_for_array(current_user.available_groups.includes(:memberships))
   end
 
   # GET '/myGroups'

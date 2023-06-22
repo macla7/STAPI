@@ -9,6 +9,17 @@ How to switch between development and production:
 ## CURRENT TODO's
 
 - Figure out a user Flow.
+- when asked to join a group, the 'otherGroups' isn't negating the fact that you've already asked to join (like the user invite flow does).
+- With Search, and Discover groups, change query/components so that the users/groups with invites already still show... but the checkbox is disabled and it says something like 'pending'.. cause atm it just disappears.
+  - Button to get to these screens
+- if.. in no groups
+  - link to discover groups
+  - link to create group?
+- if no posts but in groups
+  - link to discover groups
+  - link to create post
+- If created a group
+  - flow to recommend adding users.
 - Check names of:
   - JavaScript
     - cleaning up the non-used API calls.
