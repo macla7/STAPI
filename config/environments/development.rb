@@ -9,6 +9,9 @@ Rails.application.configure do
   end
 
   Rails.application.routes.default_url_options = { host: ENV['HOST'], port: 3000 }
+  #   Rails.application.routes.default_url_options = {
+  #   host: 'http://www.shiftmarket.com.au'
+  # }
 
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development

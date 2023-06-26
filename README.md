@@ -9,17 +9,7 @@ How to switch between development and production:
 ## CURRENT TODO's
 
 - Figure out a user Flow.
-- when asked to join a group, the 'otherGroups' isn't negating the fact that you've already asked to join (like the user invite flow does).
 - With Search, and Discover groups, change query/components so that the users/groups with invites already still show... but the checkbox is disabled and it says something like 'pending'.. cause atm it just disappears.
-  - Button to get to these screens
-- if.. in no groups
-  - link to discover groups
-  - link to create group?
-- if no posts but in groups
-  - link to discover groups
-  - link to create post
-- If created a group
-  - flow to recommend adding users.
 - Check names of:
   - JavaScript
     - cleaning up the non-used API calls.
@@ -31,6 +21,7 @@ How to switch between development and production:
   - go over my past saved bookmarks on rspec.
   - create the rest of my model tests
 - Then submit to apple store (where current submission is)
+- We don't want posts to disappear on running out of time... we simply want them to be greyed out... in the bidding section (and the ability to bid is over).. maybe some kind of (x).. won the bidding..
 - Omniauth:
 
   1. deanin vid.. got to 15:00mins in.. hit snag that I need a bundle ID. Appears to be an apple thing. Fuck. Put this on pause. Done all the 'rails code' for the video i believe.. (had to be edited for my api, jwt token auth setup).
