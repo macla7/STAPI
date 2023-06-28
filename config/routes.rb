@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
 
-  root 'pages#home'
+  root 'privacy_policy#home', to: 'privacy_policy#home'
 
   draw :api
 

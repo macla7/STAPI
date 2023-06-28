@@ -10,6 +10,9 @@ How to switch between development and production:
 
 - Figure out a user Flow.
 - With Search, and Discover groups, change query/components so that the users/groups with invites already still show... but the checkbox is disabled and it says something like 'pending'.. cause atm it just disappears.
+- change 'seeking' to 'wanting'
+- make sure you can't comment nothing. Atm blank comments allowed.
+- why are my push notifications not working.....?
 - Check names of:
   - JavaScript
     - cleaning up the non-used API calls.
