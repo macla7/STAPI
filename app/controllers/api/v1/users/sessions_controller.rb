@@ -17,10 +17,12 @@ module Api
 
           find_user = User.where("email = ?", params["email"]).first
 
-          if find_user.valid_password?(params["password"])
+          if find_user.nil?
+            render json: { valid_email: false }, status: :unprocessable_entity
+          elsif find_user.valid_password?(params["password"])
             render json: render_user(find_user, client_app), status: :ok
           else
-            render json: { errors: find_user.errors }, status: :unprocessable_entity
+            render json: { valid_password: find_user.valid_password?(params["password"]) }, status: :unprocessable_entity
           end
         end
 

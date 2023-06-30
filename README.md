@@ -9,6 +9,7 @@ How to switch between development and production:
 ## CURRENT TODO's
 
 - Figure out a user Flow.
+- error on login details being wrong. Need to make.
 - With Search, and Discover groups, change query/components so that the users/groups with invites already still show... but the checkbox is disabled and it says something like 'pending'.. cause atm it just disappears.
 - change 'seeking' to 'wanting'
 - make sure you can't comment nothing. Atm blank comments allowed.
