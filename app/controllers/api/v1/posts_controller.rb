@@ -4,13 +4,13 @@ class Api::V1::PostsController < ApiController
   # GET /groups/${groupId}/posts or /groups/${groupId}/posts.json
   def index
     set_group
-    render json: Post.get_data_for_array(@group.posts.active.includes(:bids, :likes, :shifts))
+    render json: Post.get_data_for_array(@group.posts.includes(:bids, :likes, :shifts))
   end
 
   def index_home
     @posts = Post.joins(group: :memberships).where('memberships.user_id = ?', current_user.id)
 
-    render json: Post.get_data_for_array(@posts.active.includes(:bids, :likes, :shifts))
+    render json: Post.get_data_for_array(@posts.includes(:bids, :likes, :shifts))
   end
 
   # GET /posts/1 or /posts/1.json
