@@ -8,7 +8,7 @@ class Api::V1::PostsController < ApiController
   end
 
   def index_home
-    @posts = Post.joins(group: :memberships).where('memberships.user_id = ?', current_user.id)
+    @posts = Post.joins(group: :memberships).where('memberships.user_id = ? AND memberships.status = ?', current_user.id, 0)
 
     render json: Post.get_data_for_array(@posts.includes(:bids, :likes, :shifts))
   end

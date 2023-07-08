@@ -10,7 +10,7 @@ class Group < ApplicationRecord
   has_many :invited_users, through: :invites, source: :external_user, class_name: 'User'
 
   def admins
-    return memberships.is_admin.map { |member| member.user}
+    return memberships.is_active.is_admin.map { |member| member.user}
   end
 
   def data
@@ -19,7 +19,7 @@ class Group < ApplicationRecord
 
   # Behaviour in DTO?
   def number_of_memberships
-    return self.memberships.length()
+    return self.memberships.is_active.length()
   end
 
   def users_not_in_group

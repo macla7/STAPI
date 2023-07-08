@@ -4,7 +4,7 @@ class Api::V1::MembershipsController < ApiController
   # GET /memberships or /memberships.json
   def index
     set_group
-    render json: Membership.get_data_for_array(@group.memberships.includes(:user))
+    render json: Membership.get_data_for_array(@group.memberships.is_active.includes(:user).joins(:user).order('users.name ASC'))
   end
 
   # GET /memberships/1 or /memberships/1.json
@@ -35,12 +35,13 @@ class Api::V1::MembershipsController < ApiController
 
   # PATCH/PUT /memberships/1 or /memberships/1.json
   def update
+    set_group
     respond_to do |format|
       if @membership.update(membership_params)
-        format.html { redirect_to membership_url(@membership), notice: "Membership was successfully updated." }
-        format.json { render :show, status: :ok, location: @membership }
+        format.json { render json: Membership.get_data_for_array(
+          @group.memberships.is_active.includes(:user).joins(:user).order('users.name ASC')
+          )}
       else
-        format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @membership.errors, status: :unprocessable_entity }
       end
     end
@@ -68,6 +69,6 @@ class Api::V1::MembershipsController < ApiController
     
     # Only allow a list of trusted parameters through.
     def membership_params
-      params.require(:membership).permit(:group_id, :user_id, :role, :status)
+      params.require(:membership).permit(:id, :group_id, :user_id, :role, :status)
     end
 end

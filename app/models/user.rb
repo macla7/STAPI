@@ -21,6 +21,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :memberships
   has_many :groups, through: :memberships
+  has_many :current_groups, -> { where(memberships: { status: :current }) }, through: :memberships, source: :group
   has_many :requests, -> { where request: true}, class_name: 'Invite', foreign_key: 'external_user'
   has_many :invites, -> { where request: false }, class_name: 'Invite', foreign_key: 'external_user'
   has_many :sent_invites, -> { where request: false }, class_name: 'Invite', foreign_key: 'internal_user'
@@ -88,7 +89,7 @@ class User < ApplicationRecord
   end
 
   def not_in_groups
-    userInGroups = self.groups
+    userInGroups = self.current_groups
     allGroups = Group.all
     otherGroups = Group.where(id: (allGroups - userInGroups).map(&:id)) 
     return otherGroups
@@ -96,13 +97,13 @@ class User < ApplicationRecord
 
   def available_groups
     # Retrieve all groups the user is a member of
-    user_groups = groups
+    user_groups = current_groups
 
     # Retrieve groups the user has been invited to
-    invited_groups = Invite.where(external_user: self, request: false).pluck(:group_id)
+    invited_groups = Invite.where(external_user: self, request: false, accepted: nil).pluck(:group_id)
 
     # Retrieve groups the user has requested to join
-    requested_groups = Invite.where(external_user: self, request: true).pluck(:group_id)
+    requested_groups = Invite.where(external_user: self, request: true, accepted: nil).pluck(:group_id)
 
     # Retrieve groups the user is not a member of
     non_member_groups = Group.where.not(id: user_groups.pluck(:id))

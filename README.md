@@ -9,6 +9,7 @@ How to switch between development and production:
 ## CURRENT TODO's
 
 - Figure out a user Flow.
+- think we need a 'user' view from within GroupInfo.. as I need to be able to promote, demote and kick
 - error on login details being wrong. Need to make.
 - With Search, and Discover groups, change query/components so that the users/groups with invites already still show... but the checkbox is disabled and it says something like 'pending'.. cause atm it just disappears.
 - change 'seeking' to 'wanting'
@@ -49,9 +50,11 @@ How to switch between development and production:
 - Atm, if blueprint is made, and for some reason notifications and notificationOrigins aren't.. it won't throw any kind of exception. Is this end of the world..? Not ideal, at least. Fails silently.
 - Random long logs on image upload
 - db protection against lower bids ... ? (Not super necessary, just really doesn't make sense.. won't effect who wins tho)
+- Can make a post in a group, then leave or get kicked.. and the post is still there.. but you can't see it? Not functionaly very useful.. should either still see JUST your posts from that group, not be allowed to leave with a live post or Bid (the problem is somewhat the same but not as sever with Bids).. orr red exclaimation mark over your DP on your bids/posts in groups you're no longer in... quirky weird unlikely bug.
 
 **Non MVP features**
 
+- leave group functionality
 - calendar view
 - Put groups under home.
   - Nest all the group screens under home.

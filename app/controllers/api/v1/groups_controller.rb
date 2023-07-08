@@ -13,7 +13,7 @@ class Api::V1::GroupsController < ApiController
 
   # GET '/myGroups'
   def my_groups
-    render json: Group.get_data_for_array(current_user.groups.includes(:memberships))
+    render json: Group.get_data_for_array(current_user.current_groups.includes(:memberships))
   end
 
   # GET /groups/1 or /groups/1.json
