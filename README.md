@@ -4,11 +4,13 @@ How to switch between development and production:
 
 - Look at the '.env' files of both repo, and change the localhost (or specific IP address) url to the url of the heroku application.
 - www.shiftmarket.com.au
-- _IP ADDRESS_:3000
+- https://shiftmarket.herokuapp.com
+- http://_IP ADDRESS_:3000
 
 ## CURRENT TODO's
 
 - Figure out a user Flow.
+- change emails from 'ShipSwaps' to 'Shift it.'
 - think we need a 'user' view from within GroupInfo.. as I need to be able to promote, demote and kick
 - error on login details being wrong. Need to make.
 - With Search, and Discover groups, change query/components so that the users/groups with invites already still show... but the checkbox is disabled and it says something like 'pending'.. cause atm it just disappears.

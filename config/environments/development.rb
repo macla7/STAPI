@@ -10,7 +10,7 @@ Rails.application.configure do
 
   Rails.application.routes.default_url_options = { host: ENV['HOST'], port: 3000 }
   #   Rails.application.routes.default_url_options = {
-  #   host: 'http://www.shiftmarket.com.au'
+  #   host: 'https://shiftmarket.herokuapp.com'
   # }
 
   # In the development environment your application's code is reloaded any time

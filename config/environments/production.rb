@@ -7,7 +7,7 @@ Rails.application.configure do
   config.cache_classes = true
 
   Rails.application.routes.default_url_options = {
-    host: 'http://www.shiftmarket.com.au'
+    host: 'https://shiftmarket.herokuapp.com'
   }
 
   # Eager load code on boot. This eager loads most of Rails and
@@ -78,7 +78,7 @@ Rails.application.configure do
       :enable_starttls_auto => true
     }
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options ={:host => 'http://www.shiftmarket.com.au', :protocol => 'https'}
+  config.action_mailer.default_url_options ={:host => 'https://shiftmarket.herokuapp.com', :protocol => 'https'}
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
