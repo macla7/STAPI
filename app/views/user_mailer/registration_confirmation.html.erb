@@ -4,10 +4,10 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body style="font-family:Arial;">
-    <h2>Welcome To ShiftMarket <%= @user.name %>!</h2>
+    <h2>Welcome To <u>Shift It.</u> <%= @user.name %>!</h2>
     <p>Thanks for registering! To confirm your registration click the URL below.</p>
     <%= button_to "Confirm Email", action="https://shiftmarket.herokuapp.com/api/v1/users/" + @user.id.to_s + "/token/" + @user.confirm_token + "/confirm_email", method: "post"%>
     <p>Regards,</p>
-    <p>ShiftSwaps Team</p>
+    <p>Shift It. Team</p>
   </body>
 </html>

@@ -1,8 +1,8 @@
-Welcome To ShiftMarket <%= @user.name %>!
+Welcome To Shift It. <%= @user.name %>!
 
 Thanks for registering! To confirm your registration click the URL below.
 
 <%= button_to "Confirm Email", action="https://shiftmarket.herokuapp.com/api/v1/users/" + @user.id.to_s + "/token/" + @user.confirm_token + "/confirm_email", method: "post"%>
 
 Regards,
-ShiftSwaps Team
+Shift It. Team
