@@ -14,7 +14,7 @@ namespace :api do
     resources :users do
       resources :push_tokens
       member do
-        post '/token/:token/confirm_email', to: 'users#confirm_email', as: 'confirm_email'
+        get '/token/:token/confirm_email', to: 'users#confirm_email', as: 'confirm_email'
       end
     end
 
