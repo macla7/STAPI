@@ -6,7 +6,7 @@
   <body style="font-family:Arial;">
     <h2>Welcome To <u>Shift It.</u> <%= @user.name %>!</h2>
     <p>Thanks for registering! To confirm your registration click the URL below.</p>
-    <%= button_to "Confirm Email", action="https://shiftmarket.herokuapp.com/api/v1/users/" + @user.id.to_s + "/token/" + @user.confirm_token + "/confirm_email", method: "post"%>
+    <a href="https://shiftmarket.herokuapp.com/api/v1/users/<%= @user.id.to_s %>/token/<%= @user.confirm_token %>/confirm_email">Confirm Email Address</a>
     <p>Regards,</p>
     <p>Shift It. Team</p>
   </body>
