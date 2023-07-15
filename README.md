@@ -9,12 +9,13 @@ How to switch between development and production:
 
 ## CURRENT TODO's
 
+Fixes for Anroid Launch:
+
+- Keyboard moving screen...
+- navigation drawer coming up with screen.
+
 - Figure out a user Flow.
-- change emails from 'ShipSwaps' to 'Shift it.'
-- think we need a 'user' view from within GroupInfo.. as I need to be able to promote, demote and kick
-- error on login details being wrong. Need to make.
 - With Search, and Discover groups, change query/components so that the users/groups with invites already still show... but the checkbox is disabled and it says something like 'pending'.. cause atm it just disappears.
-- change 'seeking' to 'wanting'
 - make sure you can't comment nothing. Atm blank comments allowed.
 - why are my push notifications not working.....?
 - Check names of:
