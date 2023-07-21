@@ -52,13 +52,13 @@ module NotificationsHelper
     when 3
       return @group.admins
     when 4
-      return @group.users.distinct.where.not(id: current_user.id)
+      return @group.users.where.not(id: current_user.id)
     when 5, 7, 8
       return [@post.user]
     when 6
-      return @post.bidding_users.distinct.where.not(id: current_user.id)
+      return @post.unique_bidding_users.where.not(id: current_user.id)
     when 9
-      return @post.commenting_users.distinct.where.not(id: current_user.id)
+      return @post.unique_commenting_users.where.not(id: current_user.id)
     else
       return []
     end

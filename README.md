@@ -11,9 +11,6 @@ How to switch between development and production:
 
 Fixes for Anroid Launch:
 
-- Keyboard moving screen...
-- navigation drawer coming up with screen.
-
 - Figure out a user Flow.
 - With Search, and Discover groups, change query/components so that the users/groups with invites already still show... but the checkbox is disabled and it says something like 'pending'.. cause atm it just disappears.
 - make sure you can't comment nothing. Atm blank comments allowed.
@@ -45,7 +42,7 @@ Fixes for Anroid Launch:
 - Devise Onboarding with Wicked Gem
 - Monethly Subscriptions with Stripe and Pay Gem
 - The VSCODE Rails Extentions Used in This Series
-- Notificaiton Sounds when Messages are Sent in Chat
+- notifications Sounds when Messages are Sent in Chat
 
 **Misc Known Issues**
 
@@ -73,6 +70,7 @@ Fixes for Anroid Launch:
 - Using variable font?
 - Maybe 10 or so default DP's to choose from
 - Reacts (likes and what not)
+- Login flow that is less clunky than current state check way of doing it
 
 ## Design Notes
 
@@ -144,3 +142,7 @@ But the following articles helped even more I reckon
 **Email verification flow**
 
 - Heavily based off [this](https://coderwall.com/p/u56rra/ruby-on-rails-user-signup-email-confirmation-tutorial) article
+
+**Push notifications**
+
+- For push notifications, we used the [expo docs](https://docs.expo.dev/push-notifications/push-notifications-setup/) a lot as well as the [ruby sdk community docs](https://github.com/expo-community/expo-server-sdk-ruby)

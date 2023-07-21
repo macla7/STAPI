@@ -18,9 +18,17 @@ class Api::V1::NotificationBlueprintsController < ApiController
 
         getRecipients(notification_blueprint_params, current_user).each do |recipient|
           notification = Notification.create(recipient_id: recipient.id, notification_blueprint_id: @notification_blueprint.id)
+
+          client = Exponent::Push::Client.new
+          messages = [{
+            to: recipient.push_tokens.last.push_token,
+            sound: "default",
+            body: make_notification_description(@notification_blueprint, @notification_origin)
+          }]
+          handler = client.send_messages(messages)
           
-          expo_push_notification_service = ExpoPushNotificationService.new(recipient)
-          expo_push_notification_service.send_notifications(make_notification_description(@notification_blueprint, @notification_origin))
+          # expo_push_notification_service = ExpoPushNotificationService.new(recipient)
+          # expo_push_notification_service.send_notifications(make_notification_description(@notification_blueprint, @notification_origin))
           broadcast notification
         end
 

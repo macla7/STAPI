@@ -26,8 +26,18 @@ module Api
           end
         end
 
+        # '/session-data/with-token'
         def show
-          render json: jwt_decode(request.headers['Authorization'])[0]
+          client_app = Doorkeeper::Application.find_by(uid: user_params[:client_id])
+          unless client_app
+            return render json: {error: I18n.t('doorkeeper.errors.messages.invalid_client')},
+            status: :unauthorized
+          end
+
+          jwt_decoded = jwt_decode(request.headers['Authorization'])[0]
+          find_user = User.where("email = ?", jwt_decoded["user"]['email']).first
+
+          render json: render_user(find_user, client_app), status: :ok
         end
 
         private

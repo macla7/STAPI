@@ -42,4 +42,14 @@ class Post < ApplicationRecord
     serializable_hash(include: [comments: {methods: [:avatar_url, :commentor_name]}]) 
   end
 
+  def unique_bidding_users
+    user_ids = bids.select('DISTINCT user_id').pluck(:user_id)
+    User.where(id: user_ids)
+  end
+
+  def unique_commenting_users
+    user_ids = comments.select('DISTINCT user_id').pluck(:user_id)
+    User.where(id: user_ids)
+  end
+
 end

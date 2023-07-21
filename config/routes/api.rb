@@ -7,7 +7,7 @@ namespace :api do
     
     scope :users, module: :users do
       post '/', to: 'registrations#create', as: :user_registration
-      get '/session-data', to: 'sessions#show'
+      post '/session-data/with-token', to: 'sessions#show'
       post '/session-data', to: 'sessions#create'
     end
 
