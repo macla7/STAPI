@@ -22,11 +22,12 @@ class Api::V1::MembershipsController < ApiController
 
   # POST /memberships or /memberships.json
   def create
+    set_group
     @membership = Membership.new(membership_params)
 
     respond_to do |format|
       if @membership.save
-        format.json { render json: @membership, status: :ok }
+        format.json { render json: Membership.get_data_for_array(@group.memberships.is_active.includes(:user).joins(:user).order('users.name ASC'))}
       else
         format.json { render json: @membership.errors, status: :unprocessable_entity }
       end

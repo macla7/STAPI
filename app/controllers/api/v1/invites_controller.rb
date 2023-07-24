@@ -1,4 +1,7 @@
 class Api::V1::InvitesController < ApiController
+
+  include NotificationsHelper
+
   before_action :set_invite, only: %i[ show edit update destroy update_request]
 
   # GET /invites or /invites.json
@@ -31,6 +34,15 @@ class Api::V1::InvitesController < ApiController
 
     respond_to do |format|
       if @invite.save
+        # Create the notification blueprint after saving the invite
+        p 'about to create!!!'
+        @notification_blueprint = NotificationBlueprint.create(
+          notificationable_type: 'Invite',
+          notificationable_id: @invite.id,
+          notification_type: @invite.request ? 3 : 1,
+        )
+        
+        send_push_notification(@notification_blueprint, current_user, @invite.request ? nil : @invite.external_user_id)
         format.json { render json: @invite, status: :ok }
       else
         format.json { render json: @invite.errors, status: :unprocessable_entity }
@@ -72,17 +84,18 @@ class Api::V1::InvitesController < ApiController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_invite
-      @invite = Invite.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_invite
+    @invite = Invite.find(params[:id])
+  end
 
-    def set_group
-      @group = Group.find(params[:group_id])
-    end
+  def set_group
+    @group = Group.find(params[:group_id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def invite_params
-      params.require(:invite).permit(:group_id, :internal_user_id, :external_user_id, :request, :accepted)
-    end
+  # Only allow a list of trusted parameters through.
+  def invite_params
+    params.require(:invite).permit(:group_id, :internal_user_id, :external_user_id, :request, :accepted)
+  end
+
 end

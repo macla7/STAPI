@@ -38,17 +38,17 @@ module NotificationsHelper
     end
   end
 
-  def getRecipients(notification_blueprint_params, current_user)
-    set_entity(notification_blueprint_params['notificationable_type'], notification_blueprint_params['notificationable_id'])
+  def getRecipients(notification_blueprint, current_user, recipient_id = nil)
+    set_entity(notification_blueprint['notificationable_type'], notification_blueprint['notificationable_id'])
     p 'in notification helper, entity is'
     p @group
     p 'post is'
     p @post
     p 'current user is'
     p current_user
-    case notification_blueprint_params['notification_type']
+    case notification_blueprint['notification_type']
     when 1
-      return [User.find(notification_blueprint_params['recipient_id'])]
+      return [User.find(recipient_id)]
     when 3
       return @group.admins
     when 4
@@ -63,4 +63,29 @@ module NotificationsHelper
       return []
     end
   end
+
+  def send_push_notification(notification_blueprint, current_user, recipient_id = nil)
+    notification_origin = current_user.notification_origins.create(notification_blueprint_id: notification_blueprint.id)
+
+    getRecipients(notification_blueprint, current_user, recipient_id).each do |recipient|
+      notification = Notification.create(recipient_id: recipient.id, notification_blueprint_id: @notification_blueprint.id)
+
+      # expo_push_notification_service = ExpoPushNotificationService.new(recipient)
+      # expo_push_notification_service.send_notifications(make_notification_description(@notification_blueprint, @notification_origin))
+      broadcast notification
+
+      client = Exponent::Push::Client.new
+      messages = [{
+        to: recipient.push_tokens.last.push_token,
+        sound: "default",
+        body: make_notification_description(notification_blueprint, notification_origin)
+      }]
+      handler = client.send_messages(messages)
+    end
+  end
+
+    def broadcast notification
+      recipient = User.find(notification.recipient_id)
+      NotificationsChannel.broadcast_to(recipient, notification.data)
+    end
 end
