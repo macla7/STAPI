@@ -42,6 +42,7 @@ namespace :api do
     get '/home', to: 'posts#index_home'
     get '/myGroups', to: 'groups#my_groups'
     get '/otherGroups', to: 'groups#other_groups'
+    get '/invites/pending', to: 'invites#index_pending'
     
     namespace :android do
       resources :books

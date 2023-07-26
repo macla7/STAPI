@@ -10,6 +10,11 @@ class Api::V1::InvitesController < ApiController
     render json: @invites
   end
 
+  # GET /invites/pending or /invites/pending.json
+  def index_pending
+    render json: current_user.requests_and_invites_pending
+  end
+
   def index_requests
     set_group
     render json: @group.requests.not_accepted
@@ -43,7 +48,11 @@ class Api::V1::InvitesController < ApiController
         )
         
         send_push_notification(@notification_blueprint, current_user, @invite.request ? nil : @invite.external_user_id)
-        format.json { render json: @invite, status: :ok }
+
+        ## THIS IS ONLY FOR REQUESTS ATM
+        p 'in the CREEEEATE'
+        p current_user.requests_and_invites_pending
+        format.json { render json: current_user.requests_and_invites_pending, status: :ok }
       else
         format.json { render json: @invite.errors, status: :unprocessable_entity }
       end

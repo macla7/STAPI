@@ -96,21 +96,16 @@ class User < ApplicationRecord
   end
 
   def available_groups
-    # Retrieve all groups the user is a member of
-    user_groups = current_groups
+    Group.where.not(id: current_groups.pluck(:id))
+  end
 
+  def requests_and_invites_pending
     # Retrieve groups the user has been invited to
-    invited_groups = Invite.where(external_user: self, request: false, accepted: nil).pluck(:group_id)
+    invited_groups = Invite.where(external_user: self, request: false, accepted: nil)
 
     # Retrieve groups the user has requested to join
-    requested_groups = Invite.where(external_user: self, request: true, accepted: nil).pluck(:group_id)
+    requested_groups = Invite.where(external_user: self, request: true, accepted: nil)
 
-    # Retrieve groups the user is not a member of
-    non_member_groups = Group.where.not(id: user_groups.pluck(:id))
-
-    # Exclude invited and requested groups
-    available_groups = non_member_groups.where.not(id: invited_groups + requested_groups)
-
-    available_groups
+    invited_groups + requested_groups
   end
 end

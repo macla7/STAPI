@@ -74,13 +74,16 @@ module NotificationsHelper
       # expo_push_notification_service.send_notifications(make_notification_description(@notification_blueprint, @notification_origin))
       broadcast notification
 
-      client = Exponent::Push::Client.new
-      messages = [{
-        to: recipient.push_tokens.last.push_token,
-        sound: "default",
-        body: make_notification_description(notification_blueprint, notification_origin)
-      }]
-      handler = client.send_messages(messages)
+      
+      if recipient.push_tokens.length > 0
+        client = Exponent::Push::Client.new
+        messages = [{
+          to: recipient.push_tokens.last.push_token,
+          sound: "default",
+          body: make_notification_description(notification_blueprint, notification_origin)
+        }]
+        handler = client.send_messages(messages)
+      end
     end
   end
 
