@@ -17,9 +17,10 @@ class Post < ApplicationRecord
   
   scope :active, ->{ where('ends_at > ?', DateTime.current()) }
   scope :past_posts, ->{ where('ends_at < ?', DateTime.current())}
+  scope :live_posts, -> { where('hide = ? OR hide IS NULL', false) }
 
   def data
-    serializable_hash(include: [:shifts, :likes, comments: {methods: [:avatar_url, :commentor_name]}, bids: {methods: [:avatar_url, :bidder_name]}], methods: [:group_name, :postor_name, :avatar_url]) 
+    serializable_hash(include: [:shifts, :likes, comments: {methods: [:avatar_url, :commentor_name]}, bids: {methods: [:avatar_url, :bidder_name]}], methods: [:group_name, :postor_name, :avatar_url, :post_admins]) 
   end
 
   def group_name
@@ -50,6 +51,10 @@ class Post < ApplicationRecord
   def unique_commenting_users
     user_ids = comments.select('DISTINCT user_id').pluck(:user_id)
     User.where(id: user_ids)
+  end
+
+  def post_admins
+    group.admins
   end
 
 end
