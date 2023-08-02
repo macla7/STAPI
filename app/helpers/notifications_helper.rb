@@ -33,6 +33,18 @@ module NotificationsHelper
       return "#{notification_origin.notifier.name} commented on your Post"
     when 9
       return "#{notification_origin.notifier.name} commented on a Post you've commented on"
+    when 10
+      return "#{notification_origin.notifier.name}'s post has ended. Please Approve any Bids."
+    when 11
+      return "#{notification_origin.notifier.name}'s post ends in 5 days."
+    when 12
+      return "#{notification_origin.notifier.name}'s post ends in 3 days."
+    when 13
+      return "#{notification_origin.notifier.name}'s post ends in 2 days."
+    when 14
+      return "#{notification_origin.notifier.name}'s post ends in 1 day."
+    when 15
+      return "#{notification_origin.notifier.name}'s post ends in 1 hour."
     else 
       return "Error, can't find this notification.."
     end
@@ -51,7 +63,7 @@ module NotificationsHelper
       return [User.find(recipient_id)]
     when 3
       return @group.admins
-    when 4
+    when 4, 11, 12, 13, 14, 15
       return @group.users.where.not(id: current_user.id)
     when 5, 7, 8
       return [@post.user]
@@ -68,7 +80,7 @@ module NotificationsHelper
     notification_origin = current_user.notification_origins.create(notification_blueprint_id: notification_blueprint.id)
 
     getRecipients(notification_blueprint, current_user, recipient_id).each do |recipient|
-      notification = Notification.create(recipient_id: recipient.id, notification_blueprint_id: @notification_blueprint.id)
+      notification = Notification.create(recipient_id: recipient.id, notification_blueprint_id: notification_blueprint.id)
 
       # expo_push_notification_service = ExpoPushNotificationService.new(recipient)
       # expo_push_notification_service.send_notifications(make_notification_description(@notification_blueprint, @notification_origin))

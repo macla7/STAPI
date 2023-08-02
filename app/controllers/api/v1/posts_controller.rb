@@ -31,8 +31,23 @@ class Api::V1::PostsController < ApiController
   def create
     @post = current_user.posts.new(post_params)
 
+    # After creating a post, I want to make appropriate notification blueprints..
+    # I then want to enque the 'send_notification_thingo' at whenever necessary
+
     respond_to do |format|
       if @post.save!
+        if @post.ends_at_more_than_a_day_away?
+
+          @notification_blueprint = NotificationBlueprint.create(
+            notificationable_type: 'Post',
+            notificationable_id: @post.id,
+            notification_type: 14,
+          )
+          p 'ABOUTA SEND JOB'
+          # Schedule the job to send the notification one day before the end
+          # SendNotificationBeforeEndJob.perform_at(@post.ends_at - 1.day, @notification_blueprint.id, current_user.id)
+          SendNotificationBeforeEndJob.set(wait_until: @post.ends_at - 1.day).perform_later(@notification_blueprint.id, current_user.id)
+        end
         format.json { render json: @post.data, status: :ok }
       else
         format.json { render json: @post.errors, status: :unprocessable_entity }

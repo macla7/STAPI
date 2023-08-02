@@ -19,7 +19,7 @@ namespace :api do
     end
 
     resources :likes
-    resources :bids
+    resources :bids, only: [:create]
     resources :notification_blueprints
     resources :notifications
     resources :comments
@@ -43,6 +43,7 @@ namespace :api do
     get '/myGroups', to: 'groups#my_groups'
     get '/otherGroups', to: 'groups#other_groups'
     get '/invites/pending', to: 'invites#index_pending'
+    put '/bids/bulk_update', to: 'bids#bulk_update'
     
     namespace :android do
       resources :books

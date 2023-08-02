@@ -57,4 +57,10 @@ class Post < ApplicationRecord
     group.admins
   end
 
+  def ends_at_more_than_a_day_away?
+    return false unless ends_at.present?
+
+    ends_at > 1.day.from_now
+  end
+
 end

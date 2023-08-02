@@ -146,3 +146,7 @@ But the following articles helped even more I reckon
 **Push notifications**
 
 - For push notifications, we used the [expo docs](https://docs.expo.dev/push-notifications/push-notifications-setup/) a lot as well as the [ruby sdk community docs](https://github.com/expo-community/expo-server-sdk-ruby)
+
+**SideKiq Jobs**
+
+- [this article](https://prabinpoudel.com.np/articles/setup-active-job-with-sidekiq-in-rails/) helped a lot setting these bad boys up.

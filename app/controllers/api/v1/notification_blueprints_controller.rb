@@ -4,7 +4,7 @@ class Api::V1::NotificationBlueprintsController < ApiController
 
   include NotificationsHelper
 
-  before_action :set_notification_blueprint, only: %i[ show edit update destroy ]
+  # before_action :set_notification_blueprint, only: %i[ show edit update destroy ]
 
   # POST /notification_blueprints or /notification_blueprints.json
   def create
@@ -24,9 +24,9 @@ class Api::V1::NotificationBlueprintsController < ApiController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_notification_blueprint
-      @notification_blueprint = NotificationBlueprint.find(params[:id])
-    end
+    # def set_notification_blueprint
+    #   @notification_blueprint = NotificationBlueprint.find(params[:id])
+    # end
 
     # Only allow a list of trusted parameters through.
     def notification_blueprint_params
