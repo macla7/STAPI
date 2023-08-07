@@ -44,6 +44,8 @@ module NotificationsHelper
     when 14
       return "#{notification_origin.notifier.name}'s post ends in 1 day."
     when 15
+      return "#{notification_origin.notifier.name}'s post ends in 3 hours."
+    when 16
       return "#{notification_origin.notifier.name}'s post ends in 1 hour."
     else 
       return "Error, can't find this notification.."
@@ -52,12 +54,6 @@ module NotificationsHelper
 
   def getRecipients(notification_blueprint, current_user, recipient_id = nil)
     set_entity(notification_blueprint['notificationable_type'], notification_blueprint['notificationable_id'])
-    p 'in notification helper, entity is'
-    p @group
-    p 'post is'
-    p @post
-    p 'current user is'
-    p current_user
     case notification_blueprint['notification_type']
     when 1
       return [User.find(recipient_id)]
