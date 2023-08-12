@@ -64,4 +64,17 @@ class Post < ApplicationRecord
     ends_at > duration.from_now
   end
 
+  def latest_bid_price_or_reserve
+    latest_bid = bids.order(created_at: :desc).first
+
+    if latest_bid
+      amount = latest_bid.price
+    else
+      amount = reserve
+    end
+
+    formatter = MoneyFormatterService::MoneyFormatter.new(amount)
+    formatter.for_notification
+  end
+ 
 end
