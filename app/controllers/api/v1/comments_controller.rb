@@ -22,7 +22,7 @@ class Api::V1::CommentsController < ApiController
 
   # POST /comments or /comments.json
   def create
-    set_post_with_comment
+    set_post_with_comment_params
     @comment = current_user.comments.new(comment_params)
 
     respond_to do |format|
@@ -36,15 +36,17 @@ class Api::V1::CommentsController < ApiController
   end
 
   # PATCH/PUT /comments/1 or /comments/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @comment.update(comment_params)
-  #       format.json { render json: @comment, status: :ok, location: @comment }
-  #     else
-  #       format.json { render json: @comment.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+  def update
+    set_post(@comment)
+    respond_to do |format|
+      if @comment.update(comment_params)
+        broadcast @post
+        format.json { render json: @post.comments, status: :ok }
+      else
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # DELETE /comments/1 or /comments/1.json
   # def destroy
@@ -58,21 +60,21 @@ class Api::V1::CommentsController < ApiController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
-      @comment = Comment.where("user_id = ? AND post_id = ?", params[:comment][:user_id], params[:comment][:post_id]).first
+      # @comment = Comment.where("user_id = ? AND post_id = ?", params[:comment][:user_id], params[:comment][:post_id]).first
+      @comment = Comment.find(params[:id])
     end
 
-    def set_post
-      @post = Post.find(params[:post_id])
+    def set_post(comment)
+      @post = comment.post
     end
 
-    def set_post_with_comment
-      p 'is it getting hereeeeeeee'
+    def set_post_with_comment_params
       @post = Post.find(params[:comment][:post_id])
     end
 
     # Only allow a list of trusted parameters through.
     def comment_params
-      params.require(:comment).permit(:user_id, :post_id, :body)
+      params.require(:comment).permit(:user_id, :post_id, :body, :hide)
     end
 
     def broadcast post
