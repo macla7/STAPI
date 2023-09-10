@@ -9,7 +9,6 @@ class Post < ApplicationRecord
   has_many :bids, :dependent => :destroy
   has_many :shifts, :dependent => :destroy
   has_many :comments, -> { where(hide: false) }, class_name: 'Comment', dependent: :destroy
-  has_many :all_comments, :dependent => :destroy
   has_many :notification_blueprints, :as => :notificationable
   has_many :bidding_users, through: :bids, source: :user
   has_many :commenting_users, through: :comments, source: :user

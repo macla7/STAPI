@@ -1,5 +1,6 @@
 class Api::V1::PostsController < ApiController
   before_action :set_post, only: %i[ show edit update destroy ]
+  skip_before_action :doorkeeper_authorize!, only: %i[show]
 
   # GET /groups/${groupId}/posts or /groups/${groupId}/posts.json
   def index

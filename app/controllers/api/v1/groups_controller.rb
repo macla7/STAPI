@@ -38,7 +38,7 @@ class Api::V1::GroupsController < ApiController
         # create associated membership
         @membership = current_user.memberships.create(group_id: @group.id, status: 0, role: 0)
 
-        format.json { render json: Group.all, status: :ok }
+        format.json { render json: Group.get_data_for_array(current_user.current_groups.includes(:memberships)) }
         #format.json { render :show, status: :created, location: @group }
       else
         format.json { render json: @group.errors, status: :unprocessable_entity }
