@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_11_075015) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_02_000523) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,7 +51,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_11_075015) do
   create_table "bids", force: :cascade do |t|
     t.bigint "post_id", null: false
     t.bigint "user_id", null: false
-    t.bigint "price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "approved"
@@ -187,9 +186,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_11_075015) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "group_id", null: false
-    t.bigint "reserve"
     t.boolean "hide", default: false
+    t.integer "solution", default: 0
+    t.bigint "shift_id"
     t.index ["group_id"], name: "index_posts_on_group_id"
+    t.index ["shift_id"], name: "index_posts_on_shift_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -206,10 +207,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_11_075015) do
     t.string "position"
     t.datetime "start"
     t.datetime "end"
-    t.bigint "post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_shifts_on_post_id"
+    t.bigint "bid_id"
+    t.index ["bid_id"], name: "index_shifts_on_bid_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -249,7 +250,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_11_075015) do
   add_foreign_key "notifications", "users", column: "recipient_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "posts", "groups"
+  add_foreign_key "posts", "shifts"
   add_foreign_key "posts", "users"
   add_foreign_key "push_tokens", "users"
-  add_foreign_key "shifts", "posts"
+  add_foreign_key "shifts", "bids"
 end

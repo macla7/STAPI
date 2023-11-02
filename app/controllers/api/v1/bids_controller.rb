@@ -94,7 +94,7 @@ class Api::V1::BidsController < ApiController
 
     # Only allow a list of trusted parameters through.
     def bid_params
-      params.require(:bid).permit(:user_id, :post_id, :price)
+      params.require(:bid).permit(:user_id, :post_id)
     end
 
     def broadcast post

@@ -5,13 +5,13 @@ class Api::V1::PostsController < ApiController
   # GET /groups/${groupId}/posts or /groups/${groupId}/posts.json
   def index
     set_group
-    render json: Post.get_data_for_array(@group.posts.live_posts.includes(:bids, :likes, :shifts))
+    render json: Post.get_data_for_array(@group.posts.live_posts.includes(:bids, :likes, :shift))
   end
 
   def index_home
     @posts = Post.joins(group: :memberships).where('memberships.user_id = ? AND memberships.status = ? AND (posts.hide = ? OR posts.hide IS NULL)', current_user.id, 0, false)
 
-    render json: Post.get_data_for_array(@posts.includes(:bids, :likes, :shifts))
+    render json: Post.get_data_for_array(@posts.includes(:bids, :likes, :shift))
   end
 
   # GET /posts/1 or /posts/1.json
@@ -49,7 +49,7 @@ class Api::V1::PostsController < ApiController
     @posts = Post.joins(group: :memberships).where('memberships.user_id = ? AND memberships.status = ? AND (posts.hide = ? OR posts.hide IS NULL)', current_user.id, 0, false)
     respond_to do |format|
       if @post.update(post_params)
-        format.json { render json: Post.get_data_for_array(@posts.includes(:bids, :likes, :shifts)), status: :ok }
+        format.json { render json: Post.get_data_for_array(@posts.includes(:bids, :likes, :shift)), status: :ok }
       else
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
@@ -79,8 +79,8 @@ class Api::V1::PostsController < ApiController
     # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(
-        :body, :ends_at, :group_id, :reserve, :hide,
-        shifts_attributes: [:position, :start, :end]
+        :body, :ends_at, :group_id, :hide,
+        shift_attributes: [:position, :start, :end]
       )
     end
 end

@@ -4,7 +4,7 @@ class Api::V1::ShiftsController < ApiController
   # GET /shifts or /shifts.json
   def index
     set_post
-    render json: @post.shifts
+    render json: @post.shift
   end
 
   # GET /shifts/1 or /shifts/1.json
@@ -27,7 +27,7 @@ class Api::V1::ShiftsController < ApiController
 
     respond_to do |format|
       if @shift.save
-        format.json { render json: @post.shifts, status: :ok }
+        format.json { render json: @post.shift, status: :ok }
       else
         format.json { render json: @shift.errors, status: :unprocessable_entity }
       end
@@ -70,6 +70,6 @@ class Api::V1::ShiftsController < ApiController
 
     # Only allow a list of trusted parameters through.
     def shift_params
-      params.require(:shift).permit(:user_id, :post_id, :price)
+      params.require(:shift).permit(:user_id, :post_id)
     end
 end

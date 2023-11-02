@@ -1,3 +1,4 @@
 class Shift < ApplicationRecord
-  belongs_to :post
+  has_many :posts
+  belongs_to :bid, optional: true  
 end

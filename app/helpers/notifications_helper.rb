@@ -36,17 +36,17 @@ module NotificationsHelper
     when 10
       return "#{notification_origin.notifier.name}'s post has ended. Please Approve any Bids."
     when 11
-      return "#{notification_origin.notifier.name}'s post ends in 5 days, #{@post.latest_bid_price_or_reserve}."
+      return "#{notification_origin.notifier.name}'s post ends in 5 days"
     when 12
-      return "#{notification_origin.notifier.name}'s post ends in 3 days, #{@post.latest_bid_price_or_reserve}."
+      return "#{notification_origin.notifier.name}'s post ends in 3 days"
     when 13
-      return "#{notification_origin.notifier.name}'s post ends in 2 days, #{@post.latest_bid_price_or_reserve}."
+      return "#{notification_origin.notifier.name}'s post ends in 2 days"
     when 14
-      return "#{notification_origin.notifier.name}'s post ends in 1 day, #{@post.latest_bid_price_or_reserve}."
+      return "#{notification_origin.notifier.name}'s post ends in 1 day"
     when 15
-      return "#{notification_origin.notifier.name}'s post ends in 3 hours, #{@post.latest_bid_price_or_reserve}."
+      return "#{notification_origin.notifier.name}'s post ends in 3 hours"
     when 16
-      return "#{notification_origin.notifier.name}'s post ends in 1 hour, #{@post.latest_bid_price_or_reserve}."
+      return "#{notification_origin.notifier.name}'s post ends in 1 hour"
     else 
       return "Error, can't find this notification.."
     end
