@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_02_000523) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_03_011237) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,6 +80,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_02_000523) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "temporary", default: true
   end
 
   create_table "invites", force: :cascade do |t|
@@ -204,12 +205,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_02_000523) do
   end
 
   create_table "shifts", force: :cascade do |t|
-    t.string "position"
     t.datetime "start"
     t.datetime "end"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "bid_id"
+    t.integer "position"
+    t.text "description"
     t.index ["bid_id"], name: "index_shifts_on_bid_id"
   end
 
