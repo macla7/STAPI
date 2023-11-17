@@ -30,16 +30,38 @@ class Api::V1::PostsController < ApiController
 
   # POST /posts or /posts.json
   def create
-    @post = current_user.posts.new(post_params)
+    ActiveRecord::Base.transaction do
+      p 'creating temporary group ............................... !!!'
+      @group = Group.create()
+      p 'creating admin ............................... !!!'
+      @group.memberships.create(
+        user_id: current_user.id,
+        role: 0,
+        status: 0
+      )
+      
+      p 'creating memberships ............................... !!!'
+      params[:members_attributes].each do |user_id|
+        p 'creating membership for user ' + user_id.to_s
+        @group.memberships.create(
+        user_id: user_id,
+        role: 1,
+        status: 0
+        )
+      end
 
-    respond_to do |format|
-      if @post.save!
-        notification_service = NotificationService.new(@post, current_user)
-        notification_service.create_and_schedule_notifications
+      @post = current_user.posts.new(post_params)
+      @post.group = @group
 
-        format.json { render json: @post.data, status: :ok }
-      else
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @post.save!
+          notification_service = NotificationService.new(@post, current_user)
+          # notification_service.create_and_schedule_notifications
+
+          format.json { render json: @post.data, status: :ok }
+        else
+          format.json { render json: @post.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -79,8 +101,8 @@ class Api::V1::PostsController < ApiController
     # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(
-        :body, :ends_at, :group_id, :hide,
-        shift_attributes: [:position, :start, :end]
+        :body, :ends_at, :hide, :solution,
+        shift_attributes: [:description, :start, :end, :position, :user_id]
       )
     end
 end

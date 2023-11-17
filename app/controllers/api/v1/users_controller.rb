@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApiController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[ show edit update destroy coworkers coworkers2]
   skip_before_action :doorkeeper_authorize!, only: %i[confirm_email]
 
   # GET /groups/${groupId}/users or /groups/${groupId}/users.json
@@ -13,6 +13,14 @@ class Api::V1::UsersController < ApiController
     respond_to do |format|
       format.json { render json: @user.data, status: :ok }
     end
+  end
+
+  def coworkers
+    render json: @user.coworkers
+  end
+
+  def coworkers2
+    render json: @user.all_coworkers_data
   end
 
   # GET /users/new

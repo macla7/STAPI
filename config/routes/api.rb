@@ -13,8 +13,15 @@ namespace :api do
 
     resources :users do
       resources :push_tokens
+      resources :shifts
       member do
         get '/token/:token/confirm_email', to: 'users#confirm_email', as: 'confirm_email'
+      end
+      member do
+        get '/coworkers', to: 'users#coworkers', as: 'coworkers'
+      end
+      member do
+        get '/coworkers2', to: 'users#coworkers2', as: 'coworkers2'
       end
     end
 
@@ -23,7 +30,7 @@ namespace :api do
     resources :notification_blueprints
     resources :notifications
     resources :comments
-    
+
     resources :posts do
       resources :likes, only: [:index]
       resources :bids, only: [:index]

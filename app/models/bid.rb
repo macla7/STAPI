@@ -1,9 +1,7 @@
 class Bid < ApplicationRecord
   belongs_to :post
   belongs_to :user
-  has_one :shift
-
-
+  belongs_to :shift
 
   # default_scope { order(price: :desc) }
 

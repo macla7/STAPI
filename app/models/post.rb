@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   default_scope { order(created_at: :desc) }
 
   belongs_to :user
-  belongs_to :group
+  belongs_to :group, :dependent => :destroy
   has_many :likes, :dependent => :destroy
   has_many :bids, :dependent => :destroy
   # has_many :shifts, :dependent => :destroy
@@ -23,7 +23,7 @@ class Post < ApplicationRecord
   enum solution: [:swap, :cover, :either]
 
   def data
-    serializable_hash(include: [:shift, :likes, comments: {methods: [:avatar_url, :commentor_name]}, bids: {methods: [:avatar_url, :bidder_name]}], methods: [:group_name, :postor_name, :avatar_url, :post_admins]) 
+    serializable_hash(include: [:likes, shift: {methods: [:owner_name, :avatar_url]}, comments: {methods: [:avatar_url, :commentor_name]}, bids: {methods: [:avatar_url, :bidder_name]}], methods: [:group_name, :postor_name, :avatar_url, :post_admins]) 
   end
 
   def group_name
@@ -60,10 +60,10 @@ class Post < ApplicationRecord
     group.admins
   end
 
-  def ends_at_more_than_duration_away?(duration)
-    return false unless ends_at.present?
+  # def ends_at_more_than_duration_away?(duration)
+  #   return false unless ends_at.present?
 
-    ends_at > duration.from_now
-  end
+  #   ends_at > duration.from_now
+  # end
  
 end
