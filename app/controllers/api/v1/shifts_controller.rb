@@ -1,5 +1,5 @@
 class Api::V1::ShiftsController < ApiController
-  before_action :set_shift, only: %i[ show edit update destroy ]
+  before_action :set_shift, only: %i[ update destroy ]
 
   # GET /shifts or /shifts.json
   def index
@@ -7,9 +7,23 @@ class Api::V1::ShiftsController < ApiController
     render json: @user.shifts
   end
 
-  # GET /shifts/1 or /shifts/1.json
-  def show
+  def for_month
+    user_id = params[:id]
+    month = params[:month]
+
+    # Validate user_id and month parameters if needed
+
+    start_date = Time.strptime(month, "%Y-%m")
+    end_date = start_date.end_of_month
+
+    shifts = Shift.where(user_id: user_id, start: start_date..end_date)
+    
+    render json: shifts
   end
+
+  # # GET /shifts/1 or /shifts/1.json
+  # def show
+  # end
 
   # GET /shifts/new
   def new
@@ -37,7 +51,7 @@ class Api::V1::ShiftsController < ApiController
   def update
     respond_to do |format|
       if @shift.update(shift_params)
-        format.json { render json: @shift, status: :ok, location: @shift }
+        format.json { render json: @shift, status: :ok }
       else
         format.json { render json: @shift.errors, status: :unprocessable_entity }
       end
@@ -49,7 +63,7 @@ class Api::V1::ShiftsController < ApiController
     @shift.destroy
 
     respond_to do |format|
-      format.json { render json: Shift.all, status: :ok }
+      format.json { render json: [], status: :ok }
     end
   end
 
@@ -58,6 +72,10 @@ class Api::V1::ShiftsController < ApiController
     # def set_shift
     #   @shift = Shift.where("user_id = ? AND post_id = ?", params[:shift][:user_id], params[:shift][:post_id]).first
     # end
+
+    def set_shift
+      @shift = Shift.find(params[:id])
+    end
 
     def set_user
       @user = User.find(params[:user_id])

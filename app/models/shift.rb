@@ -4,6 +4,7 @@ class Shift < ApplicationRecord
   belongs_to :user
 
   enum position: { AM: 0, PM: 1, Night: 2, Training: 3, Custom: 4, Off: 5 }
+  enum status: { no: 0, posting: 1, bidding: 2 }
 
   def owner_name
     self.user.name
@@ -12,4 +13,5 @@ class Shift < ApplicationRecord
   def avatar_url
     self.user.avatar_url
   end
+
 end

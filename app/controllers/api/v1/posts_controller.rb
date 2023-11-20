@@ -102,7 +102,7 @@ class Api::V1::PostsController < ApiController
     def post_params
       params.require(:post).permit(
         :body, :ends_at, :hide, :solution,
-        shift_attributes: [:description, :start, :end, :position, :user_id]
+        shift_attributes: [:description, :start, :end, :position, :user_id, :status]
       )
     end
 end

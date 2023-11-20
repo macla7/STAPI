@@ -13,7 +13,10 @@ namespace :api do
 
     resources :users do
       resources :push_tokens
-      resources :shifts
+      resources :shifts 
+      member do
+        get 'for_month', to: 'shifts#for_month'
+      end
       member do
         get '/token/:token/confirm_email', to: 'users#confirm_email', as: 'confirm_email'
       end
