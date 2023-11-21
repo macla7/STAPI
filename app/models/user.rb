@@ -21,7 +21,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :memberships
   has_many :groups, through: :memberships
-  has_many :current_groups, -> { where(memberships: { status: :current }) }, through: :memberships, source: :group
+  has_many :current_groups, -> { where(memberships: { status: :current }, groups: {temporary: false}) }, through: :memberships, source: :group
   has_many :requests, -> { where request: true}, class_name: 'Invite', foreign_key: 'external_user'
   has_many :invites, -> { where request: false }, class_name: 'Invite', foreign_key: 'external_user'
   has_many :sent_invites, -> { where request: false }, class_name: 'Invite', foreign_key: 'internal_user'

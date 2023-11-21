@@ -23,7 +23,7 @@ class Post < ApplicationRecord
   enum solution: [:swap, :cover, :either]
 
   def data
-    serializable_hash(include: [:likes, shift: {methods: [:owner_name, :avatar_url]}, comments: {methods: [:avatar_url, :commentor_name]}, bids: {methods: [:avatar_url, :bidder_name]}], methods: [:group_name, :postor_name, :avatar_url, :post_admins]) 
+    serializable_hash(include: [:likes, shift: {methods: [:owner_name, :avatar_url]}, comments: {methods: [:avatar_url, :commentor_name]}, bids: {methods: [:shift_bidded, :avatar_url, :bidder_name]}], methods: [:group_name, :postor_name, :avatar_url, :post_admins]) 
   end
 
   def group_name

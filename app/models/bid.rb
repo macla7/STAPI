@@ -12,4 +12,8 @@ class Bid < ApplicationRecord
   def bidder_name
     return self.user.name
   end
+
+  def shift_bidded
+    return self.shift
+  end
 end
