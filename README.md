@@ -1,6 +1,7 @@
 # MVP API...
 
-**PLEASE READ**
+## PLEASE READ
+
 Due to large financial and peer pressure (from my startup mentors), the code in here is NOWHERE near how clean and organised as I would have liked. Barely any testing... etc. Learnt a lot of lessons from this. But yes, please don't look at it too harshly... :/
 
 **How to switch between development and production:**
@@ -10,7 +11,7 @@ Due to large financial and peer pressure (from my startup mentors), the code in 
 - https://shiftmarket.herokuapp.com
 - http://_IP ADDRESS_:3000
 
-**CURRENT TODO's**
+## CURRENT TODO's
 
 Fixes for Anroid Launch:
 
@@ -135,8 +136,6 @@ But the following articles helped even more I reckon
 - Spent probably all day, 5+hrs, trying to get fonts to work by customising react native base themes. What seemed to fix it in the end was a version update of 'native-base' itself using 'yarn upgrade native-base'..
 - Now it seems native-base doesn't like it if I try to set a customer font-Weight..
 - Uploading images via expo image picker, using form data as per [this SO Post](https://stackoverflow.com/a/46740071/17632294)
-
-# STAPI
 
 **Reset password**
 
