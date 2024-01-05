@@ -1,13 +1,16 @@
-# Look on my works, ye mighty, and despair !
+# MVP API...
 
-How to switch between development and production:
+**PLEASE READ**
+Due to large financial and peer pressure (from my startup mentors), the code in here is NOWHERE near how clean and organised as I would have liked. Barely any testing... etc. Learnt a lot of lessons from this. But yes, please don't look at it too harshly... :/
+
+**How to switch between development and production:**
 
 - Look at the '.env' files of both repo, and change the localhost (or specific IP address) url to the url of the heroku application.
 - www.shiftmarket.com.au
 - https://shiftmarket.herokuapp.com
 - http://_IP ADDRESS_:3000
 
-## CURRENT TODO's
+**CURRENT TODO's**
 
 Fixes for Anroid Launch:
 
@@ -29,10 +32,10 @@ Fixes for Anroid Launch:
 - We don't want posts to disappear on running out of time... we simply want them to be greyed out... in the bidding section (and the ability to bid is over).. maybe some kind of (x).. won the bidding..
 - Omniauth:
 
-  1. deanin vid.. got to 15:00mins in.. hit snag that I need a bundle ID. Appears to be an apple thing. Fuck. Put this on pause. Done all the 'rails code' for the video i believe.. (had to be edited for my api, jwt token auth setup).
+  1. deanin vid.. got to 15:00mins in.. hit snag that I need a bundle ID. Appears to be an apple thing. Put this on pause. Done all the 'rails code' for the video i believe.. (had to be edited for my api, jwt token auth setup).
 
 - User Testing
-- let's make some damn tests... shesh.
+- let's make some tests... shesh.
 - add look at specific post ability from groupstack? THought it was already there
 
 **Relevant Deanin videos I want to watch**
