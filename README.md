@@ -2,7 +2,7 @@
 
 ## PLEASE READ
 
-Due to large financial and peer pressure (from my startup mentors), the code in here is NOWHERE near how clean and organised as I would have liked. Barely any testing... etc. Learnt a lot of lessons from this. But yes, please don't look at it too harshly... :/
+Due to large financial and peer pressure (from my startup mentors), the code in here is NOWHERE near as clean and organised as I would have liked. Minimal testing... etc. Learnt a lot of lessons from this. But yes, please don't look at it too harshly... 🙂
 
 **How to switch between development and production:**
 
