@@ -1,6 +1,6 @@
 # MVP API...
 
-This repo is only the backend of the project. The React Native Mobile App is [here](https://github.com/macla7/materialUI).
+NOTE: This repo is only the backend of the project. The React Native Mobile App is [here](https://github.com/macla7/materialUI).
 
 ## PLEASE READ
 
