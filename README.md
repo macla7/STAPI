@@ -1,5 +1,9 @@
 # MVP API...
 
+## MVP React Native App
+
+This repo is only the backend of the project. The frontend is [here](https://github.com/macla7/materialUI)
+
 ## PLEASE READ
 
 Due to large financial and peer pressure (from my startup mentors), the code in here is NOWHERE near as clean and organised as I would have liked. Minimal testing... etc. Learnt a lot of lessons from this. But yes, please don't look at it too harshly... 🙂
